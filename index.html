@@ -1,50 +1,354 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AstraEmail</title>
-<meta name="description" content="AstraEmail: send email campaigns from your own domain and see opens and clicks.">
+<title>AstraEmail | Smart Email. Clear Insights.</title>
+<meta name="description" content="AstraEmail: send email from your own domain or Gmail and see opens and clicks in real time. Android app.">
+<meta name="theme-color" content="#060B18">
+<meta property="og:title" content="AstraEmail | Smart Email. Clear Insights.">
+<meta property="og:description" content="Send from your own domain or Gmail and see opens and clicks in real time.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://astraemail.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B132B'/%3E%3Cpath d='M32 12l6 16 16 4-16 4-6 16-6-16-16-4 16-4z' fill='%2300E5FF'/%3E%3C/svg%3E">
 <style>
-  :root { color-scheme: dark; }
+  :root {
+    --bg: #060B18; --surface: #0B132B; --card: #121D3D; --elev: #18264E; --border: #243566;
+    --blue: #2979FF; --blue-soft: #5393FF; --cyan: #00E5FF;
+    --text: #F3F7FF; --text2: #B0C0E0; --muted: #7789B0;
+    --green: #10B981; --amber: #F59E0B; --violet: #8B5CF6;
+    --radius: 20px;
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; background: #0b1020; color: #e8ecf8; }
-  main { max-width: 440px; padding: 32px 24px; text-align: center; }
-  h1 { margin: 0 0 8px; font-size: 32px; }
-  p { color: #aab3cf; line-height: 1.7; margin: 8px 0; }
-  a.btn { display: inline-block; margin-top: 24px; padding: 14px 28px; border-radius: 12px; background: #5b7cff; color: #fff; text-decoration: none; font-weight: 600; font-size: 17px; }
-  a.btn.off { background: #2a3150; color: #8993b5; pointer-events: none; }
-  .note { font-size: 13px; margin-top: 28px; color: #7f89ab; }
-  .lang { margin-top: 20px; font-size: 14px; }
-  .lang a { color: #8aa0ff; text-decoration: none; cursor: pointer; }
-  [data-l], a.btn[data-l] { display: none; }
-  [hidden], html [hidden][data-l] { display: none !important; }
-  html[lang="ar"] [data-l="ar"], html[lang="en"] [data-l="en"] { display: block; }
-  html[lang="ar"] a[data-l="ar"], html[lang="en"] a[data-l="en"] { display: inline-block; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Tahoma, "Noto Sans Arabic", Arial, sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  html[lang="ar"] .en { display: none !important; }
+  html[lang="en"] .ar { display: none !important; }
+  [hidden] { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* background glow */
+  .glow { position: absolute; inset: 0 0 auto 0; height: 760px; pointer-events: none; z-index: 0; overflow: hidden; }
+  .glow::before, .glow::after { content: ""; position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
+  .glow::before { width: 420px; height: 420px; background: var(--blue); top: -160px; inset-inline-start: -120px; }
+  .glow::after { width: 380px; height: 380px; background: var(--violet); top: 60px; inset-inline-end: -140px; opacity: .35; }
+
+  /* nav */
+  header { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(6,11,24,.72); border-bottom: 1px solid rgba(36,53,102,.6); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: .2px; }
+  .brand svg { width: 34px; height: 34px; }
+  .nav-r { display: flex; align-items: center; gap: 10px; }
+  .lang { border: 1px solid var(--border); background: transparent; color: var(--text2); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+  .lang:hover { color: var(--text); border-color: var(--blue-soft); }
+  .nav-links { display: none; gap: 26px; color: var(--text2); font-size: 15px; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 26px; border-radius: 14px; font-weight: 650; font-size: 16px; border: 1px solid transparent; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-primary { background: linear-gradient(135deg, var(--blue), #4f8dff 55%, #00b8ff); color: #fff; box-shadow: 0 10px 30px rgba(41,121,255,.38); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(41,121,255,.5); }
+  .btn-ghost { background: rgba(18,29,61,.7); border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--blue-soft); }
+  .btn-sm { padding: 9px 16px; font-size: 14px; border-radius: 11px; }
+  .btn.off { background: var(--elev); color: var(--muted); box-shadow: none; pointer-events: none; }
+
+  /* hero */
+  .hero { position: relative; padding: 52px 0 40px; z-index: 1; }
+  .hero-grid { display: grid; gap: 44px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.28); color: var(--cyan); font-size: 13.5px; font-weight: 600; }
+  .pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  h1 { font-size: clamp(34px, 8vw, 58px); line-height: 1.12; margin: 18px 0 16px; letter-spacing: -.02em; font-weight: 800; }
+  h1 em { font-style: normal; background: linear-gradient(90deg, var(--blue-soft), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  html[lang="ar"] h1 { line-height: 1.3; letter-spacing: 0; }
+  .lead { color: var(--text2); font-size: 18px; max-width: 560px; margin: 0 0 28px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .soon { margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.35); color: #fcd34d; font-size: 14.5px; max-width: 520px; }
+  .fine { margin-top: 14px; color: var(--muted); font-size: 13.5px; max-width: 520px; }
+
+  /* phone mockup */
+  .phone-wrap { display: flex; justify-content: center; position: relative; }
+  .phone { width: 286px; border-radius: 40px; padding: 10px; background: linear-gradient(160deg, #26365f, #0e1735); box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(83,147,255,.25), 0 0 80px rgba(41,121,255,.25); position: relative; direction: ltr; }
+  .screen { background: var(--surface); border-radius: 31px; overflow: hidden; padding: 16px 14px 14px; min-height: 520px; text-align: left; }
+  .notch { width: 84px; height: 20px; background: #05080f; border-radius: 12px; margin: -4px auto 12px; }
+  .s-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .s-top b { font-size: 16px; }
+  .s-top span { font-size: 11px; color: var(--muted); }
+  .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px; }
+  .kpi small { display: block; color: var(--muted); font-size: 10.5px; }
+  .kpi strong { font-size: 22px; line-height: 1.2; }
+  .kpi .g { color: var(--green); } .kpi .c { color: var(--cyan); } .kpi .b { color: var(--blue-soft); } .kpi .v { color: var(--violet); }
+  .chart { margin: 10px 0; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px 8px; }
+  .chart small { color: var(--muted); font-size: 10.5px; }
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 64px; margin-top: 6px; }
+  .bars i { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, var(--cyan), var(--blue)); opacity: .9; }
+  .row { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 9px 11px; margin-top: 8px; }
+  .av { width: 30px; height: 30px; border-radius: 50%; background: var(--elev); display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--cyan); flex: none; }
+  .row div { min-width: 0; flex: 1; }
+  .row b { display: block; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row small { color: var(--muted); font-size: 10.5px; }
+  .tag { font-size: 10px; padding: 3px 8px; border-radius: 999px; font-weight: 700; flex: none; }
+  .tag.o { background: rgba(16,185,129,.16); color: var(--green); }
+  .tag.c { background: rgba(41,121,255,.2); color: var(--blue-soft); }
+  .sample { text-align: center; color: var(--muted); font-size: 11.5px; margin-top: 12px; }
+  .float { position: absolute; background: rgba(18,29,61,.92); border: 1px solid var(--border); border-radius: 14px; padding: 9px 13px; font-size: 12.5px; backdrop-filter: blur(8px); box-shadow: 0 14px 34px rgba(0,0,0,.4); display: none; direction: ltr; }
+  .float b { color: var(--green); }
+
+  /* sections */
+  section { position: relative; z-index: 1; }
+  .sec { padding: 64px 0; }
+  .eyebrow { color: var(--cyan); font-weight: 700; font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; }
+  html[lang="ar"] .eyebrow { letter-spacing: 0; }
+  h2 { font-size: clamp(27px, 5.5vw, 40px); line-height: 1.2; margin: 10px 0 14px; letter-spacing: -.01em; }
+  html[lang="ar"] h2 { line-height: 1.4; }
+  .sub { color: var(--text2); max-width: 640px; margin: 0 0 36px; font-size: 17px; }
+  .grid { display: grid; gap: 16px; }
+  .card { background: linear-gradient(180deg, rgba(24,38,78,.55), rgba(18,29,61,.55)); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform .2s, border-color .2s; }
+  .card:hover { transform: translateY(-4px); border-color: var(--blue-soft); }
+  .ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 16px; background: rgba(41,121,255,.14); border: 1px solid rgba(83,147,255,.3); color: var(--cyan); }
+  .ico svg { width: 24px; height: 24px; }
+  .card h3 { margin: 0 0 8px; font-size: 19px; }
+  .card p { margin: 0; color: var(--text2); font-size: 15.5px; }
+
+  .steps { counter-reset: s; }
+  .step { position: relative; padding: 24px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #04101f; font-weight: 800; margin-bottom: 14px; }
+  .step h3 { margin: 0 0 6px; font-size: 18px; }
+  .step p { margin: 0; color: var(--text2); font-size: 15.5px; }
+
+  .honest { display: grid; gap: 28px; align-items: center; background: linear-gradient(135deg, rgba(41,121,255,.14), rgba(139,92,246,.12)); border: 1px solid var(--border); border-radius: 28px; padding: 28px 22px; }
+  .honest ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
+  .honest li { display: flex; gap: 12px; color: var(--text2); font-size: 15.5px; }
+  .honest li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 3px; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/70% no-repeat; }
+  .tl { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 18px; direction: ltr; text-align: left; }
+  .tl h4 { margin: 0 0 12px; font-size: 14px; color: var(--text2); font-weight: 600; }
+  .ev { display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(36,53,102,.7); font-size: 13.5px; align-items: center; }
+  .ev:first-of-type { border-top: 0; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .ev span { margin-inline-start: auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .ev em { font-style: normal; color: var(--muted); font-size: 12px; display: block; }
+
+  .final { text-align: center; padding: 56px 24px; border-radius: 32px; background: radial-gradient(600px 240px at 50% 0%, rgba(41,121,255,.35), transparent), var(--card); border: 1px solid var(--border); }
+  .final h2 { margin-top: 0; }
+  .final .cta { justify-content: center; }
+
+  footer { position: relative; z-index: 1; margin-top: 64px; border-top: 1px solid var(--border); padding: 36px 0 44px; color: var(--muted); font-size: 14px; }
+  .f-grid { display: grid; gap: 22px; }
+  footer p { margin: 0 0 8px; max-width: 640px; }
+  footer .brand { color: var(--text); margin-bottom: 10px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 0 32px; }
+    .grid.g3 { grid-template-columns: repeat(2, 1fr); }
+    .grid.g3s { grid-template-columns: repeat(3, 1fr); }
+    .honest { padding: 44px; grid-template-columns: 1.1fr .9fr; }
+    .f-grid { grid-template-columns: 1.4fr 1fr; }
+  }
+  @media (min-width: 960px) {
+    .nav-links { display: flex; }
+    .hero { padding: 84px 0 56px; }
+    .hero-grid { grid-template-columns: 1.1fr .9fr; }
+    .grid.g3 { grid-template-columns: repeat(3, 1fr); }
+    .float { display: block; }
+    .float.a { top: 70px; inset-inline-start: -34px; }
+    .float.b { bottom: 90px; inset-inline-end: -26px; }
+    .sec { padding: 88px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
-<main>
-  <h1>AstraEmail</h1>
-  <p data-l="ar">أرسل حملاتك من إيميل دومينك أو Gmail، وتابع مين فتح ومين ضغط على الروابط.</p>
-  <p data-l="en">Send campaigns from your own domain or Gmail and see who opened and clicked.</p>
-  <a class="btn" id="dl" href="https://api.astraemail.com/download" data-l="ar">تحميل التطبيق للأندرويد</a>
-  <a class="btn" id="dl-en" href="https://api.astraemail.com/download" data-l="en">Download for Android</a>
-  <p class="note" id="soon" hidden data-l="ar">رابط التحميل قيد التجهيز، ارجع بعد شوية.</p>
-  <p class="note" id="soon-en" hidden data-l="en">The download link is being prepared. Please check back soon.</p>
-  <p class="note" data-l="ar">يتوفر قريبًا على Google Play. التثبيت من ملف APK يحتاج السماح بالتثبيت من مصدر خارجي.</p>
-  <p class="note" data-l="en">Coming soon to Google Play. Installing from an APK requires allowing installs from this source.</p>
-  <div class="lang"><a id="sw" href="#">English / عربي</a></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5393FF"/><stop offset="1" stop-color="#00E5FF"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#0B132B" stroke="#243566"/><path d="M32 11l6.5 16.5L55 34l-16.5 6.5L32 57l-6.5-16.5L9 34l16.5-6.5z" fill="url(#lg)"/></symbol>
+    <symbol id="i-android" viewBox="0 0 24 24"><path fill="currentColor" d="M17.6 9.5l1.7-3a.4.4 0 00-.7-.4l-1.7 3A10.5 10.5 0 0012 8.2c-1.7 0-3.3.4-4.9 1l-1.7-3a.4.4 0 00-.7.4l1.7 3A9.4 9.4 0 002.5 17h19a9.4 9.4 0 00-3.9-7.5zM8.5 14.4a.9.9 0 110-1.8.9.9 0 010 1.8zm7 0a.9.9 0 110-1.8.9.9 0 010 1.8z"/></symbol>
+  </defs>
+</svg>
+
+<div class="glow"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="AstraEmail"><svg><use href="#logo"/></svg><span>AstraEmail</span></a>
+    <nav class="nav-links">
+      <a href="#features"><span class="en">Features</span><span class="ar">المميزات</span></a>
+      <a href="#how"><span class="en">How it works</span><span class="ar">إزاي بيشتغل</span></a>
+      <a href="#tracking"><span class="en">Tracking</span><span class="ar">التتبع</span></a>
+    </nav>
+    <div class="nav-r">
+      <button class="lang" id="sw" type="button" aria-label="Language"><span class="en">عربي</span><span class="ar">English</span></button>
+      <a class="btn btn-primary btn-sm dl" href="https://api.astraemail.com/download"><span class="en">Download</span><span class="ar">تحميل</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><i></i><span class="en">Smart Email. Clear Insights.</span><span class="ar">إيميل ذكي. رؤية واضحة.</span></span>
+      <h1>
+        <span class="en">Send from your own domain. <em>See who opened and clicked.</em></span>
+        <span class="ar">ابعت من دومينك أنت. <em>وشوف مين فتح ومين ضغط.</em></span>
+      </h1>
+      <p class="lead">
+        <span class="en">AstraEmail is an Android app for sending email campaigns from your business domain or Gmail, with open and click tracking and instant alerts on your phone.</span>
+        <span class="ar">AstraEmail تطبيق أندرويد لإرسال حملات الإيميل من دومين شركتك أو Gmail، مع تتبع الفتح والضغط على الروابط وإشعارات فورية على موبايلك.</span>
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="en">Download for Android</span><span class="ar">تحميل للأندرويد</span></a>
+        <a class="btn btn-ghost" href="#features"><span class="en">See features</span><span class="ar">شوف المميزات</span></a>
+      </div>
+      <div class="soon" id="soon" hidden>
+        <span class="en">The download link is being prepared. Please check back soon.</span>
+        <span class="ar">رابط التحميل قيد التجهيز. ارجع بعد شوية.</span>
+      </div>
+      <p class="fine">
+        <span class="en">Coming soon to Google Play. Installing from an APK file needs "install from this source" to be allowed on your phone.</span>
+        <span class="ar">قريبًا على Google Play. التثبيت من ملف APK محتاج تسمح بالتثبيت من هذا المصدر على موبايلك.</span>
+      </p>
+    </div>
+
+    <div class="phone-wrap" aria-hidden="true">
+      <div class="float a"><b>● </b><span class="en">Open detected</span><span class="ar">Open Detected</span></div>
+      <div class="float b"><b>↗ </b><span class="en">Link clicked</span><span class="ar">Link clicked</span></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="s-top"><b>Dashboard</b><span>Last 30 days</span></div>
+          <div class="kpis">
+            <div class="kpi"><small>Total Sent</small><strong class="b">1,248</strong></div>
+            <div class="kpi"><small>Open Detected</small><strong class="g">672</strong></div>
+            <div class="kpi"><small>Link Clicks</small><strong class="c">219</strong></div>
+            <div class="kpi"><small>Open Rate</small><strong class="v">53.8%</strong></div>
+          </div>
+          <div class="chart"><small>Opens per day</small>
+            <div class="bars"><i style="height:38%"></i><i style="height:55%"></i><i style="height:42%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:88%"></i><i style="height:74%"></i></div>
+          </div>
+          <div class="row"><span class="av">SA</span><div><b>Offer for Q4</b><small>sara@client.com</small></div><span class="tag o">Open</span></div>
+          <div class="row"><span class="av">MK</span><div><b>Proposal and pricing</b><small>m.khaled@firm.co</small></div><span class="tag c">Click</span></div>
+          <div class="sample"><span class="en">Sample data</span><span class="ar">بيانات تجريبية</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">Features</span><span class="ar">المميزات</span></div>
+    <h2><span class="en">Everything for outreach that works</span><span class="ar">كل اللي محتاجه لحملات ناجحة</span></h2>
+    <p class="sub"><span class="en">Built for freelancers, agencies and small teams who send email from their own brand.</span><span class="ar">متصمم للمستقلين والوكالات والفرق الصغيرة اللي بتبعت إيميل باسم علامتها.</span></p>
+    <div class="grid g3">
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div>
+        <h3><span class="en">Your own domain or Gmail</span><span class="ar">دومينك أو Gmail</span></h3>
+        <p><span class="en">Connect Gmail, or any business mailbox over SMTP, and send from contact@yourcompany.com.</span><span class="ar">اربط Gmail أو أي إيميل شركة عن طريق SMTP، وابعت من contact@شركتك.com.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3><span class="en">Open tracking</span><span class="ar">تتبع الفتح</span></h3>
+        <p><span class="en">See when a message is opened, with filtering of automatic prefetches so numbers stay honest.</span><span class="ar">اعرف امتى الرسالة اتفتحت، مع فلترة الفتح الآلي عشان الأرقام تفضل صادقة.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div>
+        <h3><span class="en">Link click tracking</span><span class="ar">تتبع الضغط على الروابط</span></h3>
+        <p><span class="en">Every link is tracked and checked for safety, so you know who is actually interested.</span><span class="ar">كل رابط بيتتبع وبيتفحص أمانه، فتعرف مين مهتم فعلًا.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1112 0c0 7 3 8 3 8H3s3-1 3-8z"/><path d="M10 20a2 2 0 004 0"/></svg></div>
+        <h3><span class="en">Instant phone alerts</span><span class="ar">إشعارات فورية</span></h3>
+        <p><span class="en">Get a push notification the moment someone opens or clicks.</span><span class="ar">بيجيلك إشعار في نفس اللحظة اللي حد يفتح أو يضغط.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 010 5.8M18 14.3c1.8.8 3 2.6 3 4.7"/></svg></div>
+        <h3><span class="en">Campaigns and contacts</span><span class="ar">حملات وجهات اتصال</span></h3>
+        <p><span class="en">Manage contacts, reuse templates with variables like first name and company, and send to a whole list.</span><span class="ar">نظّم جهات الاتصال، واستخدم قوالب بمتغيرات زي الاسم والشركة، وابعت لقائمة كاملة.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <h3><span class="en">Scheduled sending</span><span class="ar">إرسال مجدول</span></h3>
+        <p><span class="en">Pick the time. Messages go out from the server even if your phone is off.</span><span class="ar">اختار الوقت. الرسائل بتتبعت من السيرفر حتى لو موبايلك مقفول.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/><path d="M9 21l6-6" opacity="0"/></svg></div>
+        <h3><span class="en">One-click unsubscribe</span><span class="ar">إلغاء الاشتراك بضغطة</span></h3>
+        <p><span class="en">Campaign emails carry an unsubscribe link, so you respect people's choices and keep your reputation clean.</span><span class="ar">رسائل الحملات فيها رابط إلغاء اشتراك، فتحترم اختيار الناس وتحافظ على سمعتك.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+        <h3><span class="en">Private by design</span><span class="ar">خصوصية أولًا</span></h3>
+        <p><span class="en">Mailbox credentials and tokens are stored encrypted on the server and are never sent back to the app.</span><span class="ar">بيانات الدخول والتوكنات بتتخزن مشفّرة على السيرفر ومبترجعش للتطبيق تاني.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9M8.5 3v2M6 5c1 4 4 7 8 8M12 5c-1 4-4 7-8 8"/><path d="M13 21l4-10 4 10M14.5 17.5h5"/></svg></div>
+        <h3><span class="en">Arabic and English</span><span class="ar">عربي وإنجليزي</span></h3>
+        <p><span class="en">The app and this site work in both languages, right to left included.</span><span class="ar">التطبيق والموقع بيشتغلوا بالعربي والإنجليزي، واتجاه الكتابة من اليمين لليسار.</span></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">How it works</span><span class="ar">إزاي بيشتغل</span></div>
+    <h2><span class="en">From install to first open in minutes</span><span class="ar">من التثبيت لأول فتح في دقايق</span></h2>
+    <p class="sub"><span class="en">No servers to set up and no code to write.</span><span class="ar">من غير سيرفرات تظبطها ولا كود تكتبه.</span></p>
+    <div class="grid g3s steps">
+      <div class="step"><h3><span class="en">Connect your mailbox</span><span class="ar">اربط إيميلك</span></h3><p><span class="en">Sign in, then add Gmail or your domain mailbox. The app detects the provider for you.</span><span class="ar">سجّل دخول، وأضف Gmail أو إيميل الدومين. التطبيق بيتعرف على المزوّد لوحده.</span></p></div>
+      <div class="step"><h3><span class="en">Write and send</span><span class="ar">اكتب وابعت</span></h3><p><span class="en">Compose a message or pick a template, choose your contacts, send now or schedule.</span><span class="ar">اكتب رسالة أو اختار قالب، اختار جهات الاتصال، وابعت دلوقتي أو جدولها.</span></p></div>
+      <div class="step"><h3><span class="en">Watch the results</span><span class="ar">تابع النتايج</span></h3><p><span class="en">Follow opens and clicks per message and per recipient, and get alerts on your phone.</span><span class="ar">تابع الفتح والضغط لكل رسالة ولكل مستلم، وخد إشعارات على موبايلك.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tracking">
+  <div class="wrap">
+    <div class="honest">
+      <div>
+        <div class="eyebrow"><span class="en">Honest tracking</span><span class="ar">تتبع صادق</span></div>
+        <h2><span class="en">Numbers you can trust, with the limits stated</span><span class="ar">أرقام تثق فيها، وبنوضح حدودها</span></h2>
+        <p class="sub" style="margin-bottom:0"><span class="en">Email tracking is never perfect. AstraEmail tells you what it can and cannot know.</span><span class="ar">تتبع الإيميل مش مثالي أبدًا. AstraEmail بيقولك اللي يقدر يعرفه واللي ميقدرش.</span></p>
+        <ul>
+          <li><span class="en">Shown as "Open Detected", because some mail apps load images automatically.</span><span class="ar">بيظهر "Open Detected" لأن بعض تطبيقات الإيميل بتحمّل الصور تلقائيًا.</span></li>
+          <li><span class="en">Automatic prefetches and scanners are flagged so they do not inflate your rate.</span><span class="ar">الفتح الآلي وبرامج الفحص بتتعلّم عشان متضخّمش النسبة.</span></li>
+          <li><span class="en">Clicks are counted on every tracked link, with a safe redirect.</span><span class="ar">الضغطات بتتحسب على كل رابط متتبع، مع تحويل آمن.</span></li>
+        </ul>
+      </div>
+      <div class="tl" aria-hidden="true">
+        <h4>Message timeline <span style="color:var(--muted);font-weight:400">(sample)</span></h4>
+        <div class="ev"><i class="dot" style="background:var(--blue-soft)"></i><div>Sent<em>from contact@company.com</em></div><span>09:02</span></div>
+        <div class="ev"><i class="dot" style="background:var(--green)"></i><div>Open Detected<em>mobile</em></div><span>09:14</span></div>
+        <div class="ev"><i class="dot" style="background:var(--amber)"></i><div>Prefetch filtered<em>automatic image load</em></div><span>09:14</span></div>
+        <div class="ev"><i class="dot" style="background:var(--cyan)"></i><div>Link clicked<em>pricing page</em></div><span>09:21</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:8px">
+  <div class="wrap">
+    <div class="final">
+      <h2><span class="en">Ready to see who is reading?</span><span class="ar">جاهز تشوف مين بيقرأ؟</span></h2>
+      <p class="sub" style="margin-inline:auto"><span class="en">Download AstraEmail for Android and send your first tracked campaign today.</span><span class="ar">حمّل AstraEmail للأندرويد وابعت أول حملة متتبعة النهاردة.</span></p>
+      <div class="cta"><a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="en">Download for Android</span><span class="ar">تحميل للأندرويد</span></a></div>
+    </div>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap f-grid">
+    <div>
+      <div class="brand"><svg><use href="#logo"/></svg><span>AstraEmail</span></div>
+      <p><span class="en">Smart Email. Clear Insights.</span><span class="ar">إيميل ذكي. رؤية واضحة.</span></p>
+      <p><span class="en">Your mailbox credentials are encrypted on the server. We only track messages you send with AstraEmail, and every campaign email includes an unsubscribe link.</span><span class="ar">بيانات إيميلك مشفّرة على السيرفر. بنتتبع بس الرسائل اللي بتبعتها من AstraEmail، وكل إيميل حملة فيه رابط إلغاء اشتراك.</span></p>
+    </div>
+    <div>
+      <p>© <span id="y">2026</span> AstraEmail. astraemail.com</p>
+      <p><span class="en">Android app. Coming soon to Google Play.</span><span class="ar">تطبيق أندرويد. قريبًا على Google Play.</span></p>
+    </div>
+  </div>
+</footer>
+
 <script>
   var h = document.documentElement;
-  function set(l){ h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr"; }
+  function setLang(l) { h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr"; }
   var saved = null; try { saved = localStorage.getItem("l"); } catch (e) {}
-  set(saved || ((navigator.language || "").indexOf("ar") === 0 ? "ar" : "en"));
-  document.getElementById("sw").onclick = function(e){ e.preventDefault(); var n = h.lang === "ar" ? "en" : "ar"; set(n); try { localStorage.setItem("l", n); } catch (x) {} };
+  setLang(saved || ((navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en"));
+  document.getElementById("sw").onclick = function () {
+    var n = h.lang === "ar" ? "en" : "ar"; setLang(n); try { localStorage.setItem("l", n); } catch (x) {}
+  };
+  document.getElementById("y").textContent = new Date().getFullYear();
   if (location.search.indexOf("soon=1") > -1) {
-    document.getElementById("soon").hidden = false; document.getElementById("soon-en").hidden = false;
-    ["dl","dl-en"].forEach(function(i){ document.getElementById(i).className = "btn off"; });
+    document.getElementById("soon").hidden = false;
+    var b = document.querySelectorAll("a.dl"); for (var i = 0; i < b.length; i++) b[i].classList.add("off");
   }
 </script>
 </body>
