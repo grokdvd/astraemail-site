@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AstraEmail | إيميل ذكي. رؤية واضحة.</title>
+<meta name="description" content="AstraEmail تطبيق أندرويد لإرسال حملات الإيميل من دومين شركتك أو Gmail، مع تتبع الفتح والضغط على الروابط لحظة بلحظة وإشعارات فورية على موبايلك.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://astraemail.com/ar/">
+<link rel="alternate" hreflang="en" href="https://astraemail.com/">
+<link rel="alternate" hreflang="ar" href="https://astraemail.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://astraemail.com/">
+<meta name="theme-color" content="#050a24">
+<meta property="og:site_name" content="AstraEmail">
+<meta property="og:title" content="AstraEmail | إيميل ذكي. رؤية واضحة.">
+<meta property="og:description" content="ابعت من دومينك الخاص أو Gmail وشوف مين فتح ومين ضغط لحظة بلحظة.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://astraemail.com/ar/">
+<meta property="og:locale" content="ar_EG">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://astraemail.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AstraEmail | إيميل ذكي. رؤية واضحة.">
+<meta name="twitter:description" content="ابعت من دومينك الخاص أو Gmail وشوف مين فتح ومين ضغط لحظة بلحظة.">
+<meta name="twitter:image" content="https://astraemail.com/og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://astraemail.com/#org", "name": "AstraEmail", "url": "https://astraemail.com/", "logo": "https://astraemail.com/og.png"}, {"@type": "WebSite", "@id": "https://astraemail.com/#site", "url": "https://astraemail.com/", "name": "AstraEmail", "inLanguage": ["en", "ar"], "publisher": {"@id": "https://astraemail.com/#org"}}, {"@type": "SoftwareApplication", "name": "AstraEmail", "operatingSystem": "Android", "applicationCategory": "BusinessApplication", "description": "AstraEmail تطبيق أندرويد لإرسال حملات الإيميل من دومين شركتك أو Gmail، مع تتبع الفتح والضغط على الروابط لحظة بلحظة وإشعارات فورية على موبايلك.", "url": "https://astraemail.com/ar/", "inLanguage": "ar", "publisher": {"@id": "https://astraemail.com/#org"}}]}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B132B'/%3E%3Crect x='14' y='19' width='36' height='26' rx='5' fill='%235b7cff'/%3E%3Cpath d='M16 23l16 12 16-12' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #050a24; --surface: #0B132B; --card: #121D3D; --elev: #18264E; --border: #243566;
+    --blue: #2979FF; --blue-soft: #5393FF; --cyan: #00E5FF;
+    --text: #F3F7FF; --text2: #B0C0E0; --muted: #7789B0;
+    --green: #10B981; --amber: #F59E0B; --violet: #8B5CF6; --purple: #7c3aed;
+    --radius: 20px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: radial-gradient(1200px 700px at 85% -5%, rgba(124,58,237,.32), transparent 60%), radial-gradient(1000px 600px at 5% 5%, rgba(41,121,255,.30), transparent 60%), linear-gradient(180deg,#050a24 0%,#070b2e 50%,#0d0a33 100%); background-color: var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Tahoma, "Noto Sans Arabic", Arial, sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  html[lang="ar"] .en { display: none !important; }
+  html[lang="en"] .ar { display: none !important; }
+  [hidden] { display: none !important; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* background glow */
+  .glow { position: absolute; inset: 0 0 auto 0; height: 760px; pointer-events: none; z-index: 0; overflow: hidden; }
+  .glow::before, .glow::after { content: ""; position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; }
+  .glow::before { width: 420px; height: 420px; background: var(--blue); top: -160px; inset-inline-start: -120px; }
+  .glow::after { width: 380px; height: 380px; background: var(--violet); top: 60px; inset-inline-end: -140px; opacity: .35; }
+
+  /* nav */
+  header { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(14px); background: rgba(6,11,24,.72); border-bottom: 1px solid rgba(36,53,102,.6); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: .2px; }
+  .brand svg { width: 46px; height: 41px; filter: drop-shadow(0 0 10px rgba(80,140,255,.65)); }
+  .nav-r { display: flex; align-items: center; gap: 10px; }
+  .lang { text-decoration: none; display: inline-block; border: 1px solid var(--border); background: transparent; color: var(--text2); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+  .lang:hover { color: var(--text); border-color: var(--blue-soft); }
+  .nav-links { display: none; gap: 26px; color: var(--text2); font-size: 15px; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* buttons */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 26px; border-radius: 14px; font-weight: 650; font-size: 16px; border: 1px solid transparent; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+  .btn svg { width: 20px; height: 20px; flex: none; }
+  .btn-primary { background: linear-gradient(135deg, #7c3aed, #4f6dff 55%, #1fa8ff); color: #fff; box-shadow: 0 10px 30px rgba(99,80,255,.45); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(99,80,255,.6); }
+  .btn-ghost { background: rgba(18,29,61,.7); border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--blue-soft); }
+  .btn-sm { padding: 9px 16px; font-size: 14px; border-radius: 11px; }
+  .btn.off { background: var(--elev); color: var(--muted); box-shadow: none; pointer-events: none; }
+
+  /* hero */
+  .hero { position: relative; padding: 52px 0 40px; z-index: 1; }
+  .hero-grid { display: grid; gap: 44px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: rgba(0,229,255,.08); border: 1px solid rgba(0,229,255,.28); color: var(--cyan); font-size: 13.5px; font-weight: 600; }
+  .pill i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  h1 { font-size: clamp(38px, 9vw, 68px); line-height: 1.12; margin: 18px 0 16px; letter-spacing: -.02em; font-weight: 800; }
+  h1 em { font-style: normal; background: linear-gradient(90deg, #2fb4ff 0%, #5b7cff 50%, #a06bff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  html[lang="ar"] h1 { line-height: 1.3; letter-spacing: 0; }
+  .lead { color: var(--text2); font-size: 18px; max-width: 560px; margin: 0 0 28px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .soon { margin-top: 16px; padding: 12px 16px; border-radius: 12px; background: rgba(245,158,11,.1); border: 1px solid rgba(245,158,11,.35); color: #fcd34d; font-size: 14.5px; max-width: 520px; }
+  .fine { margin-top: 14px; color: var(--muted); font-size: 13.5px; max-width: 520px; }
+
+  /* phone mockup */
+  .phone-wrap { display: flex; justify-content: center; position: relative; }
+  .phone { width: 286px; border-radius: 40px; padding: 10px; background: linear-gradient(160deg, #26365f, #0e1735); box-shadow: 0 40px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(83,147,255,.25), 0 0 80px rgba(41,121,255,.25); position: relative; direction: ltr; }
+  .screen { background: var(--surface); border-radius: 31px; overflow: hidden; padding: 16px 14px 14px; min-height: 520px; text-align: left; }
+  .notch { width: 84px; height: 20px; background: #05080f; border-radius: 12px; margin: -4px auto 12px; }
+  .s-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .s-top b { font-size: 16px; }
+  .s-top span { font-size: 11px; color: var(--muted); }
+  .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px; }
+  .kpi small { display: block; color: var(--muted); font-size: 10.5px; }
+  .kpi strong { font-size: 22px; line-height: 1.2; }
+  .kpi .g { color: var(--green); } .kpi .c { color: var(--cyan); } .kpi .b { color: var(--blue-soft); } .kpi .v { color: var(--violet); }
+  .chart { margin: 10px 0; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 10px 12px 8px; }
+  .chart small { color: var(--muted); font-size: 10.5px; }
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 64px; margin-top: 6px; }
+  .bars i { flex: 1; border-radius: 5px 5px 2px 2px; background: linear-gradient(180deg, var(--cyan), var(--blue)); opacity: .9; }
+  .row { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 9px 11px; margin-top: 8px; }
+  .av { width: 30px; height: 30px; border-radius: 50%; background: var(--elev); display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--cyan); flex: none; }
+  .row div { min-width: 0; flex: 1; }
+  .row b { display: block; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row small { color: var(--muted); font-size: 10.5px; }
+  .tag { font-size: 10px; padding: 3px 8px; border-radius: 999px; font-weight: 700; flex: none; }
+  .tag.o { background: rgba(16,185,129,.16); color: var(--green); }
+  .tag.c { background: rgba(41,121,255,.2); color: var(--blue-soft); }
+  .sample { text-align: center; color: var(--muted); font-size: 11.5px; margin-top: 12px; }
+  .float { position: absolute; background: rgba(18,29,61,.92); border: 1px solid var(--border); border-radius: 14px; padding: 9px 13px; font-size: 12.5px; backdrop-filter: blur(8px); box-shadow: 0 14px 34px rgba(0,0,0,.4); display: none; direction: ltr; }
+  .float b { color: var(--green); }
+
+  /* sections */
+  section { position: relative; z-index: 1; }
+  .sec { padding: 64px 0; }
+  .eyebrow { color: var(--cyan); font-weight: 700; font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; }
+  html[lang="ar"] .eyebrow { letter-spacing: 0; }
+  h2 { font-size: clamp(27px, 5.5vw, 40px); line-height: 1.2; margin: 10px 0 14px; letter-spacing: -.01em; }
+  html[lang="ar"] h2 { line-height: 1.4; }
+  .sub { color: var(--text2); max-width: 640px; margin: 0 0 36px; font-size: 17px; }
+  .grid { display: grid; gap: 16px; }
+  .card { background: linear-gradient(180deg, rgba(24,38,78,.55), rgba(18,29,61,.55)); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: transform .2s, border-color .2s; }
+  .card:hover { transform: translateY(-4px); border-color: var(--blue-soft); }
+  .ico { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 16px; background: rgba(41,121,255,.14); border: 1px solid rgba(83,147,255,.3); color: var(--cyan); }
+  .ico svg { width: 24px; height: 24px; }
+  .card h3 { margin: 0 0 8px; font-size: 19px; }
+  .card p { margin: 0; color: var(--text2); font-size: 15.5px; }
+
+  .steps { counter-reset: s; }
+  .step { position: relative; padding: 24px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); }
+  .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--cyan)); color: #04101f; font-weight: 800; margin-bottom: 14px; }
+  .step h3 { margin: 0 0 6px; font-size: 18px; }
+  .step p { margin: 0; color: var(--text2); font-size: 15.5px; }
+
+  .honest { display: grid; gap: 28px; align-items: center; background: linear-gradient(135deg, rgba(41,121,255,.14), rgba(139,92,246,.12)); border: 1px solid var(--border); border-radius: 28px; padding: 28px 22px; }
+  .honest ul { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
+  .honest li { display: flex; gap: 12px; color: var(--text2); font-size: 15.5px; }
+  .honest li::before { content: ""; flex: none; width: 20px; height: 20px; margin-top: 3px; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/70% no-repeat; }
+  .tl { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 18px; direction: ltr; text-align: left; }
+  .tl h4 { margin: 0 0 12px; font-size: 14px; color: var(--text2); font-weight: 600; }
+  .ev { display: flex; gap: 12px; padding: 10px 0; border-top: 1px solid rgba(36,53,102,.7); font-size: 13.5px; align-items: center; }
+  .ev:first-of-type { border-top: 0; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .ev span { margin-inline-start: auto; color: var(--muted); font-size: 12px; white-space: nowrap; }
+  .ev em { font-style: normal; color: var(--muted); font-size: 12px; display: block; }
+
+  .final { text-align: center; padding: 56px 24px; border-radius: 32px; background: radial-gradient(600px 240px at 50% 0%, rgba(41,121,255,.35), transparent), var(--card); border: 1px solid var(--border); }
+  .final h2 { margin-top: 0; }
+  .final .cta { justify-content: center; }
+
+  footer { position: relative; z-index: 1; margin-top: 64px; border-top: 1px solid var(--border); padding: 36px 0 44px; color: var(--muted); font-size: 14px; }
+  .f-grid { display: grid; gap: 22px; }
+  footer p { margin: 0 0 8px; max-width: 640px; }
+  footer .brand { color: var(--text); margin-bottom: 10px; }
+
+  @media (min-width: 720px) {
+    .wrap { padding: 0 32px; }
+    .grid.g3 { grid-template-columns: repeat(2, 1fr); }
+    .grid.g3s { grid-template-columns: repeat(3, 1fr); }
+    .honest { padding: 44px; grid-template-columns: 1.1fr .9fr; }
+    .f-grid { grid-template-columns: 1.4fr 1fr; }
+  }
+  @media (min-width: 960px) {
+    .nav-links { display: flex; }
+    .hero { padding: 84px 0 56px; }
+    .hero-grid { grid-template-columns: 1.1fr .9fr; }
+    .grid.g3 { grid-template-columns: repeat(3, 1fr); }
+    .float { display: block; }
+    .float.a { top: 70px; inset-inline-start: -34px; }
+    .float.b { bottom: 90px; inset-inline-end: -26px; }
+    .sec { padding: 88px 0; }
+  }
+
+  .checks { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 0; margin: 22px 0 0; color: var(--text2); font-size: 14.5px; }
+  .checks li { display: flex; align-items: center; gap: 8px; }
+  .checks li::before { content: ""; width: 18px; height: 18px; border-radius: 50%; background: var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/70% no-repeat; }
+  .win-wrap { position: relative; display: flex; justify-content: center; direction: ltr; }
+  .orbit { position: absolute; inset: 8% -4% -2% -4%; border-radius: 50%; border: 3px solid transparent; border-bottom-color: rgba(80,160,255,.7); border-left-color: rgba(139,92,246,.6); transform: rotate(-8deg); filter: drop-shadow(0 0 14px rgba(80,140,255,.8)); pointer-events: none; }
+  .win { width: 100%; max-width: 560px; border-radius: 18px; background: #eef2ff; box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(120,140,255,.35), 0 0 90px rgba(99,80,255,.35); overflow: hidden; position: relative; color: #0d1633; text-align: left; transform: perspective(1400px) rotateY(-6deg) rotateX(2deg); }
+  .chrome { background: #0d1535; padding: 10px 14px; display: flex; gap: 7px; }
+  .chrome i { width: 10px; height: 10px; border-radius: 50%; }
+  .win-body { display: flex; }
+  .side { display: none; width: 150px; background: linear-gradient(180deg,#0b1240,#10164f); padding: 14px 10px; color: #c9d5ff; font-size: 12.5px; }
+  .side-brand { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; color: #fff; font-size: 13px; }
+  .side-brand svg { width: 26px; height: 23px; }
+  .nv { padding: 8px 10px; border-radius: 9px; margin-bottom: 3px; }
+  .nv.on { background: linear-gradient(135deg,#2f6bff,#4f46e5); color: #fff; }
+  .main { flex: 1; padding: 14px; min-width: 0; }
+  .m-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .m-top b { font-size: 16px; } .m-top span { font-size: 11px; color: #6b7aa6; }
+  .mk { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .mkc { background: #fff; border-radius: 12px; padding: 10px 12px; box-shadow: 0 2px 10px rgba(30,50,120,.08); }
+  .mkc small { display: block; font-size: 10.5px; color: #6b7aa6; }
+  .mkc strong { font-size: 21px; line-height: 1.25; }
+  .mchart { background: #fff; border-radius: 12px; padding: 10px 12px; margin-top: 8px; box-shadow: 0 2px 10px rgba(30,50,120,.08); }
+  .mchart small { font-size: 11px; color: #455082; font-weight: 600; }
+  .mchart svg { width: 100%; height: 86px; display: block; margin-top: 4px; }
+  .mrow { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 12px; padding: 8px 10px; margin-top: 8px; box-shadow: 0 2px 10px rgba(30,50,120,.08); }
+  .mrow .av { background: #e6ecff; color: #2f6bff; }
+  .mrow div { flex: 1; min-width: 0; } .mrow b { display: block; font-size: 12px; color: #0d1633; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .mrow small { color: #6b7aa6; font-size: 10.5px; }
+  .win .sample { margin: 0; padding: 8px 0 10px; background: #e3e9ff; color: #5c6a98; }
+  .float { display: block; font-size: 12px; padding: 8px 12px; }
+  .float.a { top: -16px; inset-inline-end: 36px; inset-inline-start: auto; width: max-content; }
+  .float.b { bottom: -14px; inset-inline-start: 30px; inset-inline-end: auto; width: max-content; }
+  .strip { margin-top: 28px; display: grid; gap: 4px; background: rgba(13,20,66,.55); border: 1px solid rgba(80,100,200,.35); border-radius: 24px; padding: 10px; backdrop-filter: blur(10px); }
+  .st { display: flex; gap: 14px; align-items: flex-start; padding: 16px; }
+  .si { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; flex: none; box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+  .si svg { width: 24px; height: 24px; }
+  .st h4 { margin: 0 0 4px; font-size: 16.5px; }
+  .st p { margin: 0; color: var(--text2); font-size: 14px; line-height: 1.5; }
+  @media (min-width: 560px) { .mk { grid-template-columns: repeat(4, 1fr); } .side { display: block; } }
+  @media (min-width: 960px) { .strip { grid-template-columns: repeat(4, 1fr); } .st + .st { border-inline-start: 1px solid rgba(80,100,200,.3); } .hero-grid { grid-template-columns: 1fr 1.1fr; } }
+  @media (max-width: 559px) { .win { transform: none; } .orbit { display: none; } .float { display: none; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+  /* download countdown */
+  .dlm { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(3,6,16,.72); backdrop-filter: blur(6px); }
+  .dlm.open { display: flex; }
+  .dlm-card { width: 100%; max-width: 420px; text-align: center; padding: 34px 28px 26px; border-radius: 22px; background: linear-gradient(180deg, #0f1a38, #0a1226); border: 1px solid rgba(120,140,255,.28); box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 60px rgba(91,124,255,.18); }
+  .dlm-ring { position: relative; width: 120px; height: 120px; margin: 0 auto 18px; }
+  .dlm-ring svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+  .dlm-ring circle { fill: none; stroke-width: 7; }
+  .dlm-ring .bg { stroke: rgba(255,255,255,.08); }
+  .dlm-ring .fg { stroke: url(#dlg); stroke-linecap: round; stroke-dasharray: 327; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
+  .dlm-n { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 800; }
+  .dlm h3 { margin: 0 0 8px; font-size: 21px; }
+  .dlm p { margin: 0 0 18px; color: var(--text2); font-size: 15px; }
+  .dlm-act { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .dlm-x { background: transparent; border: 1px solid var(--border); color: var(--text2); border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px; cursor: pointer; }
+  .dlm-x:hover { color: var(--text); border-color: var(--blue-soft); }
+  .dlm-hint { margin-top: 16px; color: var(--muted); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5393FF"/><stop offset="1" stop-color="#00E5FF"/></linearGradient>
+    <symbol id="logo" viewBox="0 0 72 64"><defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fb4ff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs><ellipse cx="36" cy="36" rx="31" ry="11" transform="rotate(-16 36 36)" fill="none" stroke="url(#lg2)" stroke-width="3" stroke-linecap="round" stroke-dasharray="150 30"/><rect x="18" y="19" width="34" height="25" rx="5" fill="url(#lg2)"/><path d="M20 23l15 11 15-11" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M57 6l1.8 4.6L63.5 12l-4.7 1.4L57 18l-1.8-4.6L50.5 12l4.7-1.4z" fill="#cfe9ff"/></symbol>
+    <symbol id="i-android" viewBox="0 0 24 24"><path fill="currentColor" d="M17.6 9.5l1.7-3a.4.4 0 00-.7-.4l-1.7 3A10.5 10.5 0 0012 8.2c-1.7 0-3.3.4-4.9 1l-1.7-3a.4.4 0 00-.7.4l1.7 3A9.4 9.4 0 002.5 17h19a9.4 9.4 0 00-3.9-7.5zM8.5 14.4a.9.9 0 110-1.8.9.9 0 010 1.8zm7 0a.9.9 0 110-1.8.9.9 0 010 1.8z"/></symbol>
+  </defs>
+</svg>
+
+<div class="glow"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="AstraEmail"><svg><use href="#logo"/></svg><span>AstraEmail</span></a>
+    <nav class="nav-links">
+      <a href="#features"><span class="ar">المميزات</span></a>
+      <a href="#how"><span class="ar">إزاي بيشتغل</span></a>
+      <a href="#tracking"><span class="ar">التتبع</span></a>
+    </nav>
+    <div class="nav-r">
+      <a class="lang" id="sw" href="/" hreflang="en" lang="en">English</a>
+      <a class="btn btn-primary btn-sm dl" href="https://api.astraemail.com/download"><span class="ar">تحميل</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><i></i><span class="ar">إيميل ذكي. رؤية واضحة.</span></span>
+      <h1>
+        
+        <span class="ar">إيميل ذكي. <em>رؤية واضحة.</em></span>
+      </h1>
+      <p class="lead">
+        
+        <span class="ar">AstraEmail تطبيق أندرويد لإرسال حملات الإيميل من دومين شركتك أو Gmail، مع تتبع الفتح والضغط على الروابط وإشعارات فورية على موبايلك.</span>
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="ar">تحميل للأندرويد</span></a>
+        <a class="btn btn-ghost" href="#features"><span class="ar">شوف المميزات</span></a>
+      </div>
+      <ul class="checks"><li><span class="ar">تتبع الفتح والضغط</span></li><li><span class="ar">دومينك الخاص</span></li><li><span class="ar">عربي وإنجليزي</span></li></ul>
+      <div class="soon" id="soon" hidden>
+        
+        <span class="ar">التحميل قيد التجهيز وهيتاح هنا خلال وقت قصير.</span>
+      </div>
+      <p class="fine">
+        
+        <span class="ar">قريبًا على Google Play. التثبيت من ملف APK محتاج تسمح بالتثبيت من هذا المصدر على موبايلك.</span>
+      </p>
+    </div>
+
+    <div class="win-wrap" aria-hidden="true">
+      <div class="orbit"></div>
+      <div class="win">
+        <div class="chrome"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
+        <div class="win-body">
+          <aside class="side">
+            <div class="side-brand"><svg><use href="#logo"/></svg><b>AstraEmail</b></div>
+            <div class="nv on">Dashboard</div><div class="nv">Compose</div><div class="nv">History</div><div class="nv">Workspace</div><div class="nv">Settings</div>
+          </aside>
+          <div class="main">
+            <div class="m-top"><b>Dashboard</b><span>Last 30 days</span></div>
+            <div class="mk">
+              <div class="mkc"><small>Total Sent</small><strong style="color:#2f6bff">1,248</strong></div>
+              <div class="mkc"><small>Open Detected</small><strong style="color:#0ea371">672</strong></div>
+              <div class="mkc"><small>Link Clicks</small><strong style="color:#7c3aed">219</strong></div>
+              <div class="mkc"><small>Open Rate</small><strong style="color:#0b8fd6">53.8%</strong></div>
+            </div>
+            <div class="mchart"><small>Campaign Performance</small>
+              <svg viewBox="0 0 300 90" preserveAspectRatio="none"><defs><linearGradient id="ar1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6bff" stop-opacity=".28"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></linearGradient></defs>
+                <path d="M0 62 L40 52 L80 58 L120 38 L160 46 L200 26 L240 34 L300 14 L300 90 L0 90Z" fill="url(#ar1)"/>
+                <path d="M0 62 L40 52 L80 58 L120 38 L160 46 L200 26 L240 34 L300 14" fill="none" stroke="#2f6bff" stroke-width="2.4" stroke-linejoin="round"/>
+                <path d="M0 78 L40 70 L80 74 L120 62 L160 68 L200 54 L240 60 L300 44" fill="none" stroke="#8b5cf6" stroke-width="2.4" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="mrow"><span class="av">SA</span><div><b>Offer for Q4</b><small>sara@client.com</small></div><span class="tag o">Open</span></div>
+            <div class="mrow"><span class="av">MK</span><div><b>Proposal and pricing</b><small>m.khaled@firm.co</small></div><span class="tag c">Click</span></div>
+          </div>
+        </div>
+        <div class="sample"><span class="ar">بيانات تجريبية</span></div>
+      </div>
+      <div class="float a"><b>● </b><span class="ar">Open Detected</span></div>
+      <div class="float b"><b>✓ </b><span class="ar">Campaign sent</span></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="strip">
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#7c3aed,#5b3df0)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><div><h4><span class="ar">دومينك أو Gmail</span></h4><p><span class="ar">ابعت من إيميل شركتك عن طريق SMTP أو من Gmail.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#2f6bff,#1fa8ff)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10M9 20V4M15 20v-8M21 20V7"/></svg></div><div><h4><span class="ar">الفتح والضغط</span></h4><p><span class="ar">تتبع كل رسالة وكل مستلم، مع فلترة الفتح الآلي.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#10b981,#0ea371)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><h4><span class="ar">حملات ومجدولة</span></h4><p><span class="ar">جهات اتصال وقوالب وإرسال بيشتغل من السيرفر.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#f59e0b,#ea7a0b)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><div><h4><span class="ar">خصوصية أولًا</span></h4><p><span class="ar">بيانات مشفّرة ورابط إلغاء اشتراك في الحملات.</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="features">
+  <div class="wrap">
+    <div class="eyebrow"><span class="ar">المميزات</span></div>
+    <h2><span class="ar">كل اللي محتاجه لحملات ناجحة</span></h2>
+    <p class="sub"><span class="ar">متصمم للمستقلين والوكالات والفرق الصغيرة اللي بتبعت إيميل باسم علامتها.</span></p>
+    <div class="grid g3">
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div>
+        <h3><span class="ar">دومينك أو Gmail</span></h3>
+        <p><span class="ar">اربط Gmail أو أي إيميل شركة عن طريق SMTP، وابعت من إيميل بدومين شركتك.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3><span class="ar">تتبع الفتح</span></h3>
+        <p><span class="ar">اعرف امتى الرسالة اتفتحت، مع فلترة الفتح الآلي عشان الأرقام تفضل صادقة.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div>
+        <h3><span class="ar">تتبع الضغط على الروابط</span></h3>
+        <p><span class="ar">كل رابط بيتتبع وبيتفحص أمانه، فتعرف مين مهتم فعلًا.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1112 0c0 7 3 8 3 8H3s3-1 3-8z"/><path d="M10 20a2 2 0 004 0"/></svg></div>
+        <h3><span class="ar">إشعارات فورية</span></h3>
+        <p><span class="ar">بيجيلك إشعار في نفس اللحظة اللي حد يفتح أو يضغط.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 010 5.8M18 14.3c1.8.8 3 2.6 3 4.7"/></svg></div>
+        <h3><span class="ar">حملات وجهات اتصال</span></h3>
+        <p><span class="ar">نظّم جهات الاتصال، واستخدم قوالب بمتغيرات زي الاسم والشركة، وابعت لقائمة كاملة.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <h3><span class="ar">إرسال مجدول</span></h3>
+        <p><span class="ar">اختار الوقت. الرسائل بتتبعت من السيرفر حتى لو موبايلك مقفول.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/><path d="M9 21l6-6" opacity="0"/></svg></div>
+        <h3><span class="ar">إلغاء الاشتراك بضغطة</span></h3>
+        <p><span class="ar">رسائل الحملات فيها رابط إلغاء اشتراك، فتحترم اختيار الناس وتحافظ على سمعتك.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
+        <h3><span class="ar">خصوصية أولًا</span></h3>
+        <p><span class="ar">بيانات الدخول والتوكنات بتتخزن مشفّرة على السيرفر ومبترجعش للتطبيق تاني.</span></p></article>
+      <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9M8.5 3v2M6 5c1 4 4 7 8 8M12 5c-1 4-4 7-8 8"/><path d="M13 21l4-10 4 10M14.5 17.5h5"/></svg></div>
+        <h3><span class="ar">عربي وإنجليزي</span></h3>
+        <p><span class="ar">التطبيق والموقع بيشتغلوا بالعربي والإنجليزي، واتجاه الكتابة من اليمين لليسار.</span></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="eyebrow"><span class="ar">إزاي بيشتغل</span></div>
+    <h2><span class="ar">من التثبيت لأول فتح في دقايق</span></h2>
+    <p class="sub"><span class="ar">من غير سيرفرات تظبطها ولا كود تكتبه.</span></p>
+    <div class="grid g3s steps">
+      <div class="step"><h3><span class="ar">اربط إيميلك</span></h3><p><span class="ar">سجّل دخول، وأضف Gmail أو إيميل الدومين. التطبيق بيتعرف على المزوّد لوحده.</span></p></div>
+      <div class="step"><h3><span class="ar">اكتب وابعت</span></h3><p><span class="ar">اكتب رسالة أو اختار قالب، اختار جهات الاتصال، وابعت دلوقتي أو جدولها.</span></p></div>
+      <div class="step"><h3><span class="ar">تابع النتايج</span></h3><p><span class="ar">تابع الفتح والضغط لكل رسالة ولكل مستلم، وخد إشعارات على موبايلك.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="tracking">
+  <div class="wrap">
+    <div class="honest">
+      <div>
+        <div class="eyebrow"><span class="ar">تتبع صادق</span></div>
+        <h2><span class="ar">أرقام تثق فيها، وبنوضح حدودها</span></h2>
+        <p class="sub" style="margin-bottom:0"><span class="ar">تتبع الإيميل مش مثالي أبدًا. AstraEmail بيقولك اللي يقدر يعرفه واللي ميقدرش.</span></p>
+        <ul>
+          <li><span class="ar">بيظهر "Open Detected" لأن بعض تطبيقات الإيميل بتحمّل الصور تلقائيًا.</span></li>
+          <li><span class="ar">الفتح الآلي وبرامج الفحص بتتعلّم عشان متضخّمش النسبة.</span></li>
+          <li><span class="ar">الضغطات بتتحسب على كل رابط متتبع، مع تحويل آمن.</span></li>
+        </ul>
+      </div>
+      <div class="tl" aria-hidden="true">
+        <h4>Message timeline <span style="color:var(--muted);font-weight:400">(sample)</span></h4>
+        <div class="ev"><i class="dot" style="background:var(--blue-soft)"></i><div>Sent<em>from contact@company.com</em></div><span>09:02</span></div>
+        <div class="ev"><i class="dot" style="background:var(--green)"></i><div>Open Detected<em>mobile</em></div><span>09:14</span></div>
+        <div class="ev"><i class="dot" style="background:var(--amber)"></i><div>Prefetch filtered<em>automatic image load</em></div><span>09:14</span></div>
+        <div class="ev"><i class="dot" style="background:var(--cyan)"></i><div>Link clicked<em>pricing page</em></div><span>09:21</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:8px">
+  <div class="wrap">
+    <div class="final">
+      <h2><span class="ar">جاهز تشوف مين بيقرأ؟</span></h2>
+      <p class="sub" style="margin-inline:auto"><span class="ar">حمّل AstraEmail للأندرويد وابعت أول حملة متتبعة النهاردة.</span></p>
+      <div class="cta"><a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="ar">تحميل للأندرويد</span></a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap f-grid">
+    <div>
+      <div class="brand"><svg><use href="#logo"/></svg><span>AstraEmail</span></div>
+      <p><span class="ar">إيميل ذكي. رؤية واضحة.</span></p>
+      <p><span class="ar">بيانات إيميلك مشفّرة على السيرفر. بنتتبع بس الرسائل اللي بتبعتها من AstraEmail، وكل إيميل حملة فيه رابط إلغاء اشتراك.</span></p>
+    </div>
+    <div>
+      <p>© <span id="y">2026</span> AstraEmail. astraemail.com</p>
+      <p><span class="ar">تطبيق أندرويد. قريبًا على Google Play.</span></p>
+    </div>
+  </div>
+</footer>
+
+<div class="dlm" id="dlm" role="dialog" aria-modal="true" aria-live="polite" hidden>
+  <div class="dlm-card">
+    <div class="dlm-ring">
+      <svg viewBox="0 0 120 120"><defs><linearGradient id="dlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fb4ff"/><stop offset="1" stop-color="#a06bff"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="dlfg" cx="60" cy="60" r="52"/></svg>
+      <div class="dlm-n" id="dln">5</div>
+    </div>
+    <h3><span class="ar">التحميل هيبدأ بعد <b id="dlsA">5</b> ثانية</span></h3>
+    <p><span class="ar">تطبيق AstraEmail للأندرويد (ملف APK).</span></p>
+    <div class="dlm-act">
+      <a class="btn btn-primary btn-sm" id="dlnow" href="https://api.astraemail.com/download"><span class="ar">ابدأ التحميل الآن</span></a>
+      <button class="dlm-x" id="dlx" type="button"><span class="ar">إلغاء</span></button>
+    </div>
+    <div class="dlm-hint"><span class="ar">لو الموبايل سألك، اسمح بالتثبيت من هذا المصدر.</span></div>
+  </div>
+</div>
+
+<script>
+  var h = document.documentElement;
+  document.getElementById("y").textContent = new Date().getFullYear();
+  if (location.search.indexOf("soon=1") > -1) {
+    document.getElementById("soon").hidden = false;
+    var b = document.querySelectorAll("a.dl"); for (var i = 0; i < b.length; i++) b[i].classList.add("off");
+  }
+  (function () {
+    var m = document.getElementById("dlm"), n = document.getElementById("dln"), fg = document.getElementById("dlfg"),
+        sE = document.getElementById("dlsE") || {}, sA = document.getElementById("dlsA") || {}, T = 5, left = T, timer = null, started = false;
+    var URL_DL = "https://api.astraemail.com/download";
+    function go() { if (started) return; started = true; clearInterval(timer); location.href = URL_DL; setTimeout(close, 1500); }
+    function close() { clearInterval(timer); m.classList.remove("open"); m.hidden = true; document.body.style.overflow = ""; }
+    function tick() {
+      left--; if (left <= 0) { n.textContent = "0"; sE.textContent = sA.textContent = "0"; fg.style.strokeDashoffset = 327; go(); return; }
+      n.textContent = left; sE.textContent = sA.textContent = left; fg.style.strokeDashoffset = 327 * (T - left) / T;
+    }
+    function open(e) {
+      if (location.search.indexOf("soon=1") > -1) return;
+      e.preventDefault(); started = false; left = T; n.textContent = T; sE.textContent = sA.textContent = T;
+      fg.style.transition = "none"; fg.style.strokeDashoffset = 0; void fg.getBoundingClientRect(); fg.style.transition = "";
+      m.hidden = false; m.classList.add("open"); document.body.style.overflow = "hidden";
+      clearInterval(timer); timer = setInterval(tick, 1000);
+    }
+    var b = document.querySelectorAll("a.dl"); for (var i = 0; i < b.length; i++) b[i].addEventListener("click", open);
+    document.getElementById("dlx").onclick = close;
+    document.getElementById("dlnow").addEventListener("click", function (e) { e.preventDefault(); go(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+    m.addEventListener("click", function (e) { if (e.target === m) close(); });
+  })();
+</script>
+</body>
+</html>
