@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>AstraEmail admin</title>
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#0b1020;color:#e8ecf8;min-height:100vh;display:flex;justify-content:center}
+main{width:100%;max-width:520px;padding:32px 20px}
+h1{font-size:22px;margin:0 0 20px}
+.card{background:#141b34;border:1px solid #26305a;border-radius:14px;padding:20px;margin-bottom:16px}
+.big{font-size:48px;font-weight:700;line-height:1}
+.muted{color:#93a0c8;font-size:14px}
+button{background:#4f6bff;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:16px;cursor:pointer}
+button.alt{background:#26305a}
+table{width:100%;border-collapse:collapse;margin-top:8px}
+td,th{text-align:left;padding:8px 4px;border-bottom:1px solid #26305a}
+td:last-child,th:last-child{text-align:right}
+.err{color:#ff9aa8}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<h1>AstraEmail downloads</h1>
+<div class="card" id="signin">
+  <p class="muted">Sign in with the admin Google account to see the APK download count.</p>
+  <button id="btnIn">Sign in with Google</button>
+  <p class="err" id="err"></p>
+</div>
+<div id="stats" hidden>
+  <div class="card"><div class="muted">Total APK downloads</div><div class="big" id="total">-</div></div>
+  <div class="card"><div class="muted">Last <span id="days">30</span> days</div><table><thead><tr><th>Day</th><th>Downloads</th></tr></thead><tbody id="rows"></tbody></table></div>
+  <p class="muted" id="who"></p>
+  <div class="row"><button id="btnRef" class="alt">Refresh</button><button id="btnOut" class="alt">Sign out</button></div>
+</div>
+</main>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+const app = initializeApp({ apiKey: "AIzaSyCclyRMMyCXCR3kqsJBeD1FvtYy5hC-S08", authDomain: "gen-lang-client-0364506252.firebaseapp.com", projectId: "gen-lang-client-0364506252" });
+const auth = getAuth(app);
+const $ = (id) => document.getElementById(id);
+function show(signedIn) { $("signin").hidden = signedIn; $("stats").hidden = !signedIn; }
+async function load(user) {
+  $("err").textContent = "";
+  try {
+    const token = await user.getIdToken(true);
+    const r = await fetch("/admin-api/downloads?days=30", { headers: { Authorization: "Bearer " + token }, cache: "no-store" });
+    const j = await r.json().catch(() => ({}));
+    if (r.status === 403) throw new Error("This Google account is not allowed.");
+    if (!r.ok || !j.success) throw new Error(j.error || "Request failed (" + r.status + ")");
+    $("total").textContent = j.total_downloads;
+    $("days").textContent = j.days;
+    $("rows").innerHTML = "";
+    if (!j.per_day.length) { $("rows").innerHTML = '<tr><td colspan="2" class="muted">No downloads yet</td></tr>'; }
+    for (const d of j.per_day) { const tr = document.createElement("tr"); const a = document.createElement("td"); a.textContent = d.day; const b = document.createElement("td"); b.textContent = d.downloads; tr.append(a, b); $("rows").append(tr); }
+    $("who").textContent = "Signed in as " + user.email;
+    show(true);
+  } catch (e) {
+    show(false); $("err").textContent = e.message; await signOut(auth);
+  }
+}
+onAuthStateChanged(auth, (u) => { if (u) load(u); else show(false); });
+$("btnIn").onclick = async () => { $("err").textContent = ""; try { await signInWithPopup(auth, new GoogleAuthProvider()); } catch (e) { $("err").textContent = e.code === "auth/unauthorized-domain" ? "Sign-in is not enabled for this domain yet (add astraemail.com to Firebase authorized domains)." : e.message; } };
+$("btnOut").onclick = () => signOut(auth);
+$("btnRef").onclick = () => auth.currentUser && load(auth.currentUser);
+</script>
+</body>
+</html>
