@@ -17,7 +17,8 @@
   .note { font-size: 13px; margin-top: 28px; color: #7f89ab; }
   .lang { margin-top: 20px; font-size: 14px; }
   .lang a { color: #8aa0ff; text-decoration: none; cursor: pointer; }
-  [data-l] { display: none; }
+  [data-l], a.btn[data-l] { display: none; }
+  [hidden], html [hidden][data-l] { display: none !important; }
   html[lang="ar"] [data-l="ar"], html[lang="en"] [data-l="en"] { display: block; }
   html[lang="ar"] a[data-l="ar"], html[lang="en"] a[data-l="en"] { display: inline-block; }
 </style>
