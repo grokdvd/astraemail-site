@@ -33,6 +33,10 @@ td:last-child,th:last-child{text-align:right}
 <div id="stats" hidden>
   <div class="card"><div class="muted">Total APK downloads</div><div class="big" id="total">-</div></div>
   <div class="card"><div class="muted">Last <span id="days">30</span> days</div><table><thead><tr><th>Day</th><th>Downloads</th></tr></thead><tbody id="rows"></tbody></table></div>
+  <div class="card"><div class="muted">Downloads by country</div><table><thead><tr><th>Country</th><th>Downloads</th></tr></thead><tbody id="dlCountry"></tbody></table></div>
+  <div class="card"><div class="muted">Apps opened (installs that opened the app, version 1.1 and later)</div><div class="big" id="opened">-</div>
+    <table><thead><tr><th>Country</th><th>Opened</th></tr></thead><tbody id="opCountry"></tbody></table>
+    <table><thead><tr><th>First opened on</th><th>Installs</th></tr></thead><tbody id="opDay"></tbody></table></div>
   <p class="muted" id="who"></p>
   <div class="row"><button id="btnRef" class="alt">Refresh</button><button id="btnOut" class="alt">Sign out</button></div>
 </div>
@@ -44,6 +48,11 @@ const app = initializeApp({ apiKey: "AIzaSyCclyRMMyCXCR3kqsJBeD1FvtYy5hC-S08", a
 const auth = getAuth(app);
 const $ = (id) => document.getElementById(id);
 function show(signedIn) { $("signin").hidden = signedIn; $("stats").hidden = !signedIn; }
+function fill(id, list, a, b) {
+  const body = $(id); body.innerHTML = "";
+  if (!list.length) { body.innerHTML = '<tr><td colspan="2" class="muted">None yet</td></tr>'; return; }
+  for (const d of list) { const tr = document.createElement("tr"); const x = document.createElement("td"); x.textContent = d[a]; const y = document.createElement("td"); y.textContent = d[b]; tr.append(x, y); body.append(tr); }
+}
 async function load(user) {
   $("err").textContent = "";
   try {
@@ -57,6 +66,11 @@ async function load(user) {
     $("rows").innerHTML = "";
     if (!j.per_day.length) { $("rows").innerHTML = '<tr><td colspan="2" class="muted">No downloads yet</td></tr>'; }
     for (const d of j.per_day) { const tr = document.createElement("tr"); const a = document.createElement("td"); a.textContent = d.day; const b = document.createElement("td"); b.textContent = d.downloads; tr.append(a, b); $("rows").append(tr); }
+    fill("dlCountry", j.downloads_per_country || [], "country", "downloads");
+    const ao = j.app_opened || { total: 0, per_country: [], per_day: [] };
+    $("opened").textContent = ao.total;
+    fill("opCountry", ao.per_country, "country", "installs");
+    fill("opDay", ao.per_day, "day", "installs");
     $("who").textContent = "Signed in as " + user.email;
     show(true);
   } catch (e) {
