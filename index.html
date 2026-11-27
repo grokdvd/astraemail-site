@@ -199,6 +199,23 @@
   @media (min-width: 960px) { .strip { grid-template-columns: repeat(4, 1fr); } .st + .st { border-inline-start: 1px solid rgba(80,100,200,.3); } .hero-grid { grid-template-columns: 1fr 1.1fr; } }
   @media (max-width: 559px) { .win { transform: none; } .orbit { display: none; } .float { display: none; } }
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+  /* download countdown */
+  .dlm { position: fixed; inset: 0; z-index: 100; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(3,6,16,.72); backdrop-filter: blur(6px); }
+  .dlm.open { display: flex; }
+  .dlm-card { width: 100%; max-width: 420px; text-align: center; padding: 34px 28px 26px; border-radius: 22px; background: linear-gradient(180deg, #0f1a38, #0a1226); border: 1px solid rgba(120,140,255,.28); box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 60px rgba(91,124,255,.18); }
+  .dlm-ring { position: relative; width: 120px; height: 120px; margin: 0 auto 18px; }
+  .dlm-ring svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+  .dlm-ring circle { fill: none; stroke-width: 7; }
+  .dlm-ring .bg { stroke: rgba(255,255,255,.08); }
+  .dlm-ring .fg { stroke: url(#dlg); stroke-linecap: round; stroke-dasharray: 327; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
+  .dlm-n { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 44px; font-weight: 800; }
+  .dlm h3 { margin: 0 0 8px; font-size: 21px; }
+  .dlm p { margin: 0 0 18px; color: var(--text2); font-size: 15px; }
+  .dlm-act { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .dlm-x { background: transparent; border: 1px solid var(--border); color: var(--text2); border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px; cursor: pointer; }
+  .dlm-x:hover { color: var(--text); border-color: var(--blue-soft); }
+  .dlm-hint { margin-top: 16px; color: var(--muted); font-size: 12.5px; }
 </style>
 </head>
 <body>
@@ -246,8 +263,8 @@
       </div>
       <ul class="checks"><li><span class="en">Open and click tracking</span><span class="ar">تتبع الفتح والضغط</span></li><li><span class="en">Your own domain</span><span class="ar">دومينك الخاص</span></li><li><span class="en">Arabic and English</span><span class="ar">عربي وإنجليزي</span></li></ul>
       <div class="soon" id="soon" hidden>
-        <span class="en">The download link is being prepared. Please check back soon.</span>
-        <span class="ar">رابط التحميل قيد التجهيز. ارجع بعد شوية.</span>
+        <span class="en">The download is being prepared and will be available here shortly.</span>
+        <span class="ar">التحميل قيد التجهيز وهيتاح هنا خلال وقت قصير.</span>
       </div>
       <p class="fine">
         <span class="en">Coming soon to Google Play. Installing from an APK file needs "install from this source" to be allowed on your phone.</span>
@@ -399,6 +416,22 @@
   </div>
 </footer>
 
+<div class="dlm" id="dlm" role="dialog" aria-modal="true" aria-live="polite" hidden>
+  <div class="dlm-card">
+    <div class="dlm-ring">
+      <svg viewBox="0 0 120 120"><defs><linearGradient id="dlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fb4ff"/><stop offset="1" stop-color="#a06bff"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="dlfg" cx="60" cy="60" r="52"/></svg>
+      <div class="dlm-n" id="dln">5</div>
+    </div>
+    <h3><span class="en">Your download starts in <b id="dlsE">5</b> s</span><span class="ar">التحميل هيبدأ بعد <b id="dlsA">5</b> ثانية</span></h3>
+    <p><span class="en">AstraEmail for Android (APK).</span><span class="ar">تطبيق AstraEmail للأندرويد (ملف APK).</span></p>
+    <div class="dlm-act">
+      <a class="btn btn-primary btn-sm" id="dlnow" href="https://api.astraemail.com/download"><span class="en">Start now</span><span class="ar">ابدأ التحميل الآن</span></a>
+      <button class="dlm-x" id="dlx" type="button"><span class="en">Cancel</span><span class="ar">إلغاء</span></button>
+    </div>
+    <div class="dlm-hint"><span class="en">If your phone asks, allow installing from this source.</span><span class="ar">لو الموبايل سألك، اسمح بالتثبيت من هذا المصدر.</span></div>
+  </div>
+</div>
+
 <script>
   var h = document.documentElement;
   function setLang(l) { h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr"; }
@@ -412,6 +445,29 @@
     document.getElementById("soon").hidden = false;
     var b = document.querySelectorAll("a.dl"); for (var i = 0; i < b.length; i++) b[i].classList.add("off");
   }
+  (function () {
+    var m = document.getElementById("dlm"), n = document.getElementById("dln"), fg = document.getElementById("dlfg"),
+        sE = document.getElementById("dlsE"), sA = document.getElementById("dlsA"), T = 5, left = T, timer = null, started = false;
+    var URL_DL = "https://api.astraemail.com/download";
+    function go() { if (started) return; started = true; clearInterval(timer); location.href = URL_DL; setTimeout(close, 1500); }
+    function close() { clearInterval(timer); m.classList.remove("open"); m.hidden = true; document.body.style.overflow = ""; }
+    function tick() {
+      left--; if (left <= 0) { n.textContent = "0"; sE.textContent = sA.textContent = "0"; fg.style.strokeDashoffset = 327; go(); return; }
+      n.textContent = left; sE.textContent = sA.textContent = left; fg.style.strokeDashoffset = 327 * (T - left) / T;
+    }
+    function open(e) {
+      if (location.search.indexOf("soon=1") > -1) return;
+      e.preventDefault(); started = false; left = T; n.textContent = T; sE.textContent = sA.textContent = T;
+      fg.style.transition = "none"; fg.style.strokeDashoffset = 0; void fg.getBoundingClientRect(); fg.style.transition = "";
+      m.hidden = false; m.classList.add("open"); document.body.style.overflow = "hidden";
+      clearInterval(timer); timer = setInterval(tick, 1000);
+    }
+    var b = document.querySelectorAll("a.dl"); for (var i = 0; i < b.length; i++) b[i].addEventListener("click", open);
+    document.getElementById("dlx").onclick = close;
+    document.getElementById("dlnow").addEventListener("click", function (e) { e.preventDefault(); go(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+    m.addEventListener("click", function (e) { if (e.target === m) close(); });
+  })();
 </script>
 </body>
 </html>
