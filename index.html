@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AstraEmail</title>
+<meta name="description" content="AstraEmail: send email campaigns from your own domain and see opens and clicks.">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; background: #0b1020; color: #e8ecf8; }
+  main { max-width: 440px; padding: 32px 24px; text-align: center; }
+  h1 { margin: 0 0 8px; font-size: 32px; }
+  p { color: #aab3cf; line-height: 1.7; margin: 8px 0; }
+  a.btn { display: inline-block; margin-top: 24px; padding: 14px 28px; border-radius: 12px; background: #5b7cff; color: #fff; text-decoration: none; font-weight: 600; font-size: 17px; }
+  a.btn.off { background: #2a3150; color: #8993b5; pointer-events: none; }
+  .note { font-size: 13px; margin-top: 28px; color: #7f89ab; }
+  .lang { margin-top: 20px; font-size: 14px; }
+  .lang a { color: #8aa0ff; text-decoration: none; cursor: pointer; }
+  [data-l] { display: none; }
+  html[lang="ar"] [data-l="ar"], html[lang="en"] [data-l="en"] { display: block; }
+  html[lang="ar"] a[data-l="ar"], html[lang="en"] a[data-l="en"] { display: inline-block; }
+</style>
+</head>
+<body>
+<main>
+  <h1>AstraEmail</h1>
+  <p data-l="ar">أرسل حملاتك من إيميل دومينك أو Gmail، وتابع مين فتح ومين ضغط على الروابط.</p>
+  <p data-l="en">Send campaigns from your own domain or Gmail and see who opened and clicked.</p>
+  <a class="btn" id="dl" href="https://api.astraemail.com/download" data-l="ar">تحميل التطبيق للأندرويد</a>
+  <a class="btn" id="dl-en" href="https://api.astraemail.com/download" data-l="en">Download for Android</a>
+  <p class="note" id="soon" hidden data-l="ar">رابط التحميل قيد التجهيز، ارجع بعد شوية.</p>
+  <p class="note" id="soon-en" hidden data-l="en">The download link is being prepared. Please check back soon.</p>
+  <p class="note" data-l="ar">يتوفر قريبًا على Google Play. التثبيت من ملف APK يحتاج السماح بالتثبيت من مصدر خارجي.</p>
+  <p class="note" data-l="en">Coming soon to Google Play. Installing from an APK requires allowing installs from this source.</p>
+  <div class="lang"><a id="sw" href="#">English / عربي</a></div>
+</main>
+<script>
+  var h = document.documentElement;
+  function set(l){ h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr"; }
+  var saved = null; try { saved = localStorage.getItem("l"); } catch (e) {}
+  set(saved || ((navigator.language || "").indexOf("ar") === 0 ? "ar" : "en"));
+  document.getElementById("sw").onclick = function(e){ e.preventDefault(); var n = h.lang === "ar" ? "en" : "ar"; set(n); try { localStorage.setItem("l", n); } catch (x) {} };
+  if (location.search.indexOf("soon=1") > -1) {
+    document.getElementById("soon").hidden = false; document.getElementById("soon-en").hidden = false;
+    ["dl","dl-en"].forEach(function(i){ document.getElementById(i).className = "btn off"; });
+  }
+</script>
+</body>
+</html>
