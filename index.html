@@ -4,12 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AstraEmail | Smart Email. Clear Insights.</title>
-<meta name="description" content="AstraEmail: send email from your own domain or Gmail and see opens and clicks in real time. Android app.">
+<meta name="description" content="AstraEmail is an Android app for sending email campaigns from your own domain or Gmail, with real-time open and click tracking and instant phone alerts.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://astraemail.com/">
+<link rel="alternate" hreflang="en" href="https://astraemail.com/">
+<link rel="alternate" hreflang="ar" href="https://astraemail.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://astraemail.com/">
 <meta name="theme-color" content="#050a24">
+<meta property="og:site_name" content="AstraEmail">
 <meta property="og:title" content="AstraEmail | Smart Email. Clear Insights.">
 <meta property="og:description" content="Send from your own domain or Gmail and see opens and clicks in real time.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://astraemail.com/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AstraEmail | Smart Email. Clear Insights.">
+<meta name="twitter:description" content="Send from your own domain or Gmail and see opens and clicks in real time.">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://astraemail.com/#org", "name": "AstraEmail", "url": "https://astraemail.com/"}, {"@type": "WebSite", "@id": "https://astraemail.com/#site", "url": "https://astraemail.com/", "name": "AstraEmail", "inLanguage": ["en", "ar"], "publisher": {"@id": "https://astraemail.com/#org"}}, {"@type": "SoftwareApplication", "name": "AstraEmail", "operatingSystem": "Android", "applicationCategory": "BusinessApplication", "description": "AstraEmail is an Android app for sending email campaigns from your own domain or Gmail, with real-time open and click tracking and instant phone alerts.", "url": "https://astraemail.com/", "inLanguage": "en", "publisher": {"@id": "https://astraemail.com/#org"}}]}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230B132B'/%3E%3Crect x='14' y='19' width='36' height='26' rx='5' fill='%235b7cff'/%3E%3Cpath d='M16 23l16 12 16-12' fill='none' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -40,7 +52,7 @@
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: .2px; }
   .brand svg { width: 46px; height: 41px; filter: drop-shadow(0 0 10px rgba(80,140,255,.65)); }
   .nav-r { display: flex; align-items: center; gap: 10px; }
-  .lang { border: 1px solid var(--border); background: transparent; color: var(--text2); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+  .lang { text-decoration: none; display: inline-block; border: 1px solid var(--border); background: transparent; color: var(--text2); border-radius: 999px; padding: 7px 14px; font: inherit; font-size: 14px; cursor: pointer; }
   .lang:hover { color: var(--text); border-color: var(--blue-soft); }
   .nav-links { display: none; gap: 26px; color: var(--text2); font-size: 15px; }
   .nav-links a:hover { color: var(--text); }
@@ -233,13 +245,13 @@
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="AstraEmail"><svg><use href="#logo"/></svg><span>AstraEmail</span></a>
     <nav class="nav-links">
-      <a href="#features"><span class="en">Features</span><span class="ar">المميزات</span></a>
-      <a href="#how"><span class="en">How it works</span><span class="ar">إزاي بيشتغل</span></a>
-      <a href="#tracking"><span class="en">Tracking</span><span class="ar">التتبع</span></a>
+      <a href="#features"><span class="en">Features</span></a>
+      <a href="#how"><span class="en">How it works</span></a>
+      <a href="#tracking"><span class="en">Tracking</span></a>
     </nav>
     <div class="nav-r">
-      <button class="lang" id="sw" type="button" aria-label="Language"><span class="en">عربي</span><span class="ar">English</span></button>
-      <a class="btn btn-primary btn-sm dl" href="https://api.astraemail.com/download"><span class="en">Download</span><span class="ar">تحميل</span></a>
+      <a class="lang" id="sw" href="/ar/" hreflang="ar" lang="ar">عربي</a>
+      <a class="btn btn-primary btn-sm dl" href="https://api.astraemail.com/download"><span class="en">Download</span></a>
     </div>
   </div>
 </header>
@@ -248,27 +260,27 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="pill"><i></i><span class="en">Smart Email. Clear Insights.</span><span class="ar">إيميل ذكي. رؤية واضحة.</span></span>
+      <span class="pill"><i></i><span class="en">Smart Email. Clear Insights.</span></span>
       <h1>
         <span class="en">Smart Email. <em>Clear Insights.</em></span>
-        <span class="ar">إيميل ذكي. <em>رؤية واضحة.</em></span>
+        
       </h1>
       <p class="lead">
         <span class="en">AstraEmail is an Android app for sending email campaigns from your business domain or Gmail, with open and click tracking and instant alerts on your phone.</span>
-        <span class="ar">AstraEmail تطبيق أندرويد لإرسال حملات الإيميل من دومين شركتك أو Gmail، مع تتبع الفتح والضغط على الروابط وإشعارات فورية على موبايلك.</span>
+        
       </p>
       <div class="cta">
-        <a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="en">Download for Android</span><span class="ar">تحميل للأندرويد</span></a>
-        <a class="btn btn-ghost" href="#features"><span class="en">See features</span><span class="ar">شوف المميزات</span></a>
+        <a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="en">Download for Android</span></a>
+        <a class="btn btn-ghost" href="#features"><span class="en">See features</span></a>
       </div>
-      <ul class="checks"><li><span class="en">Open and click tracking</span><span class="ar">تتبع الفتح والضغط</span></li><li><span class="en">Your own domain</span><span class="ar">دومينك الخاص</span></li><li><span class="en">Arabic and English</span><span class="ar">عربي وإنجليزي</span></li></ul>
+      <ul class="checks"><li><span class="en">Open and click tracking</span></li><li><span class="en">Your own domain</span></li><li><span class="en">Arabic and English</span></li></ul>
       <div class="soon" id="soon" hidden>
         <span class="en">The download is being prepared and will be available here shortly.</span>
-        <span class="ar">التحميل قيد التجهيز وهيتاح هنا خلال وقت قصير.</span>
+        
       </div>
       <p class="fine">
         <span class="en">Coming soon to Google Play. Installing from an APK file needs "install from this source" to be allowed on your phone.</span>
-        <span class="ar">قريبًا على Google Play. التثبيت من ملف APK محتاج تسمح بالتثبيت من هذا المصدر على موبايلك.</span>
+        
       </p>
     </div>
 
@@ -300,69 +312,69 @@
             <div class="mrow"><span class="av">MK</span><div><b>Proposal and pricing</b><small>m.khaled@firm.co</small></div><span class="tag c">Click</span></div>
           </div>
         </div>
-        <div class="sample"><span class="en">Sample data</span><span class="ar">بيانات تجريبية</span></div>
+        <div class="sample"><span class="en">Sample data</span></div>
       </div>
-      <div class="float a"><b>● </b><span class="en">Open detected</span><span class="ar">Open Detected</span></div>
-      <div class="float b"><b>✓ </b><span class="en">Campaign sent</span><span class="ar">Campaign sent</span></div>
+      <div class="float a"><b>● </b><span class="en">Open detected</span></div>
+      <div class="float b"><b>✓ </b><span class="en">Campaign sent</span></div>
     </div>
   </div>
 
   <div class="wrap">
     <div class="strip">
-      <div class="st"><div class="si" style="background:linear-gradient(135deg,#7c3aed,#5b3df0)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><div><h4><span class="en">Your domain or Gmail</span><span class="ar">دومينك أو Gmail</span></h4><p><span class="en">Send from contact@yourcompany.com over SMTP, or from Gmail.</span><span class="ar">ابعت من إيميل شركتك عن طريق SMTP أو من Gmail.</span></p></div></div>
-      <div class="st"><div class="si" style="background:linear-gradient(135deg,#2f6bff,#1fa8ff)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10M9 20V4M15 20v-8M21 20V7"/></svg></div><div><h4><span class="en">Opens and clicks</span><span class="ar">الفتح والضغط</span></h4><p><span class="en">Track each message and recipient, with prefetch filtering.</span><span class="ar">تتبع كل رسالة وكل مستلم، مع فلترة الفتح الآلي.</span></p></div></div>
-      <div class="st"><div class="si" style="background:linear-gradient(135deg,#10b981,#0ea371)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><h4><span class="en">Campaigns, scheduled</span><span class="ar">حملات ومجدولة</span></h4><p><span class="en">Contacts, templates and sends that run from the server.</span><span class="ar">جهات اتصال وقوالب وإرسال بيشتغل من السيرفر.</span></p></div></div>
-      <div class="st"><div class="si" style="background:linear-gradient(135deg,#f59e0b,#ea7a0b)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><div><h4><span class="en">Private by design</span><span class="ar">خصوصية أولًا</span></h4><p><span class="en">Encrypted credentials and an unsubscribe link in campaigns.</span><span class="ar">بيانات مشفّرة ورابط إلغاء اشتراك في الحملات.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#7c3aed,#5b3df0)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div><div><h4><span class="en">Your domain or Gmail</span></h4><p><span class="en">Send from contact@yourcompany.com over SMTP, or from Gmail.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#2f6bff,#1fa8ff)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10M9 20V4M15 20v-8M21 20V7"/></svg></div><div><h4><span class="en">Opens and clicks</span></h4><p><span class="en">Track each message and recipient, with prefetch filtering.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#10b981,#0ea371)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><h4><span class="en">Campaigns, scheduled</span></h4><p><span class="en">Contacts, templates and sends that run from the server.</span></p></div></div>
+      <div class="st"><div class="si" style="background:linear-gradient(135deg,#f59e0b,#ea7a0b)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><div><h4><span class="en">Private by design</span></h4><p><span class="en">Encrypted credentials and an unsubscribe link in campaigns.</span></p></div></div>
     </div>
   </div>
 </section>
 
 <section class="sec" id="features">
   <div class="wrap">
-    <div class="eyebrow"><span class="en">Features</span><span class="ar">المميزات</span></div>
-    <h2><span class="en">Everything for outreach that works</span><span class="ar">كل اللي محتاجه لحملات ناجحة</span></h2>
-    <p class="sub"><span class="en">Built for freelancers, agencies and small teams who send email from their own brand.</span><span class="ar">متصمم للمستقلين والوكالات والفرق الصغيرة اللي بتبعت إيميل باسم علامتها.</span></p>
+    <div class="eyebrow"><span class="en">Features</span></div>
+    <h2><span class="en">Everything for outreach that works</span></h2>
+    <p class="sub"><span class="en">Built for freelancers, agencies and small teams who send email from their own brand.</span></p>
     <div class="grid g3">
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div>
-        <h3><span class="en">Your own domain or Gmail</span><span class="ar">دومينك أو Gmail</span></h3>
-        <p><span class="en">Connect Gmail, or any business mailbox over SMTP, and send from contact@yourcompany.com.</span><span class="ar">اربط Gmail أو أي إيميل شركة عن طريق SMTP، وابعت من إيميل بدومين شركتك.</span></p></article>
+        <h3><span class="en">Your own domain or Gmail</span></h3>
+        <p><span class="en">Connect Gmail, or any business mailbox over SMTP, and send from contact@yourcompany.com.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3><span class="en">Open tracking</span><span class="ar">تتبع الفتح</span></h3>
-        <p><span class="en">See when a message is opened, with filtering of automatic prefetches so numbers stay honest.</span><span class="ar">اعرف امتى الرسالة اتفتحت، مع فلترة الفتح الآلي عشان الأرقام تفضل صادقة.</span></p></article>
+        <h3><span class="en">Open tracking</span></h3>
+        <p><span class="en">See when a message is opened, with filtering of automatic prefetches so numbers stay honest.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div>
-        <h3><span class="en">Link click tracking</span><span class="ar">تتبع الضغط على الروابط</span></h3>
-        <p><span class="en">Every link is tracked and checked for safety, so you know who is actually interested.</span><span class="ar">كل رابط بيتتبع وبيتفحص أمانه، فتعرف مين مهتم فعلًا.</span></p></article>
+        <h3><span class="en">Link click tracking</span></h3>
+        <p><span class="en">Every link is tracked and checked for safety, so you know who is actually interested.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1112 0c0 7 3 8 3 8H3s3-1 3-8z"/><path d="M10 20a2 2 0 004 0"/></svg></div>
-        <h3><span class="en">Instant phone alerts</span><span class="ar">إشعارات فورية</span></h3>
-        <p><span class="en">Get a push notification the moment someone opens or clicks.</span><span class="ar">بيجيلك إشعار في نفس اللحظة اللي حد يفتح أو يضغط.</span></p></article>
+        <h3><span class="en">Instant phone alerts</span></h3>
+        <p><span class="en">Get a push notification the moment someone opens or clicks.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 010 5.8M18 14.3c1.8.8 3 2.6 3 4.7"/></svg></div>
-        <h3><span class="en">Campaigns and contacts</span><span class="ar">حملات وجهات اتصال</span></h3>
-        <p><span class="en">Manage contacts, reuse templates with variables like first name and company, and send to a whole list.</span><span class="ar">نظّم جهات الاتصال، واستخدم قوالب بمتغيرات زي الاسم والشركة، وابعت لقائمة كاملة.</span></p></article>
+        <h3><span class="en">Campaigns and contacts</span></h3>
+        <p><span class="en">Manage contacts, reuse templates with variables like first name and company, and send to a whole list.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
-        <h3><span class="en">Scheduled sending</span><span class="ar">إرسال مجدول</span></h3>
-        <p><span class="en">Pick the time. Messages go out from the server even if your phone is off.</span><span class="ar">اختار الوقت. الرسائل بتتبعت من السيرفر حتى لو موبايلك مقفول.</span></p></article>
+        <h3><span class="en">Scheduled sending</span></h3>
+        <p><span class="en">Pick the time. Messages go out from the server even if your phone is off.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/><path d="M9 21l6-6" opacity="0"/></svg></div>
-        <h3><span class="en">One-click unsubscribe</span><span class="ar">إلغاء الاشتراك بضغطة</span></h3>
-        <p><span class="en">Campaign emails carry an unsubscribe link, so you respect people's choices and keep your reputation clean.</span><span class="ar">رسائل الحملات فيها رابط إلغاء اشتراك، فتحترم اختيار الناس وتحافظ على سمعتك.</span></p></article>
+        <h3><span class="en">One-click unsubscribe</span></h3>
+        <p><span class="en">Campaign emails carry an unsubscribe link, so you respect people's choices and keep your reputation clean.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div>
-        <h3><span class="en">Private by design</span><span class="ar">خصوصية أولًا</span></h3>
-        <p><span class="en">Mailbox credentials and tokens are stored encrypted on the server and are never sent back to the app.</span><span class="ar">بيانات الدخول والتوكنات بتتخزن مشفّرة على السيرفر ومبترجعش للتطبيق تاني.</span></p></article>
+        <h3><span class="en">Private by design</span></h3>
+        <p><span class="en">Mailbox credentials and tokens are stored encrypted on the server and are never sent back to the app.</span></p></article>
       <article class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9M8.5 3v2M6 5c1 4 4 7 8 8M12 5c-1 4-4 7-8 8"/><path d="M13 21l4-10 4 10M14.5 17.5h5"/></svg></div>
-        <h3><span class="en">Arabic and English</span><span class="ar">عربي وإنجليزي</span></h3>
-        <p><span class="en">The app and this site work in both languages, right to left included.</span><span class="ar">التطبيق والموقع بيشتغلوا بالعربي والإنجليزي، واتجاه الكتابة من اليمين لليسار.</span></p></article>
+        <h3><span class="en">Arabic and English</span></h3>
+        <p><span class="en">The app and this site work in both languages, right to left included.</span></p></article>
     </div>
   </div>
 </section>
 
 <section class="sec" id="how">
   <div class="wrap">
-    <div class="eyebrow"><span class="en">How it works</span><span class="ar">إزاي بيشتغل</span></div>
-    <h2><span class="en">From install to first open in minutes</span><span class="ar">من التثبيت لأول فتح في دقايق</span></h2>
-    <p class="sub"><span class="en">No servers to set up and no code to write.</span><span class="ar">من غير سيرفرات تظبطها ولا كود تكتبه.</span></p>
+    <div class="eyebrow"><span class="en">How it works</span></div>
+    <h2><span class="en">From install to first open in minutes</span></h2>
+    <p class="sub"><span class="en">No servers to set up and no code to write.</span></p>
     <div class="grid g3s steps">
-      <div class="step"><h3><span class="en">Connect your mailbox</span><span class="ar">اربط إيميلك</span></h3><p><span class="en">Sign in, then add Gmail or your domain mailbox. The app detects the provider for you.</span><span class="ar">سجّل دخول، وأضف Gmail أو إيميل الدومين. التطبيق بيتعرف على المزوّد لوحده.</span></p></div>
-      <div class="step"><h3><span class="en">Write and send</span><span class="ar">اكتب وابعت</span></h3><p><span class="en">Compose a message or pick a template, choose your contacts, send now or schedule.</span><span class="ar">اكتب رسالة أو اختار قالب، اختار جهات الاتصال، وابعت دلوقتي أو جدولها.</span></p></div>
-      <div class="step"><h3><span class="en">Watch the results</span><span class="ar">تابع النتايج</span></h3><p><span class="en">Follow opens and clicks per message and per recipient, and get alerts on your phone.</span><span class="ar">تابع الفتح والضغط لكل رسالة ولكل مستلم، وخد إشعارات على موبايلك.</span></p></div>
+      <div class="step"><h3><span class="en">Connect your mailbox</span></h3><p><span class="en">Sign in, then add Gmail or your domain mailbox. The app detects the provider for you.</span></p></div>
+      <div class="step"><h3><span class="en">Write and send</span></h3><p><span class="en">Compose a message or pick a template, choose your contacts, send now or schedule.</span></p></div>
+      <div class="step"><h3><span class="en">Watch the results</span></h3><p><span class="en">Follow opens and clicks per message and per recipient, and get alerts on your phone.</span></p></div>
     </div>
   </div>
 </section>
@@ -371,13 +383,13 @@
   <div class="wrap">
     <div class="honest">
       <div>
-        <div class="eyebrow"><span class="en">Honest tracking</span><span class="ar">تتبع صادق</span></div>
-        <h2><span class="en">Numbers you can trust, with the limits stated</span><span class="ar">أرقام تثق فيها، وبنوضح حدودها</span></h2>
-        <p class="sub" style="margin-bottom:0"><span class="en">Email tracking is never perfect. AstraEmail tells you what it can and cannot know.</span><span class="ar">تتبع الإيميل مش مثالي أبدًا. AstraEmail بيقولك اللي يقدر يعرفه واللي ميقدرش.</span></p>
+        <div class="eyebrow"><span class="en">Honest tracking</span></div>
+        <h2><span class="en">Numbers you can trust, with the limits stated</span></h2>
+        <p class="sub" style="margin-bottom:0"><span class="en">Email tracking is never perfect. AstraEmail tells you what it can and cannot know.</span></p>
         <ul>
-          <li><span class="en">Shown as "Open Detected", because some mail apps load images automatically.</span><span class="ar">بيظهر "Open Detected" لأن بعض تطبيقات الإيميل بتحمّل الصور تلقائيًا.</span></li>
-          <li><span class="en">Automatic prefetches and scanners are flagged so they do not inflate your rate.</span><span class="ar">الفتح الآلي وبرامج الفحص بتتعلّم عشان متضخّمش النسبة.</span></li>
-          <li><span class="en">Clicks are counted on every tracked link, with a safe redirect.</span><span class="ar">الضغطات بتتحسب على كل رابط متتبع، مع تحويل آمن.</span></li>
+          <li><span class="en">Shown as "Open Detected", because some mail apps load images automatically.</span></li>
+          <li><span class="en">Automatic prefetches and scanners are flagged so they do not inflate your rate.</span></li>
+          <li><span class="en">Clicks are counted on every tracked link, with a safe redirect.</span></li>
         </ul>
       </div>
       <div class="tl" aria-hidden="true">
@@ -394,9 +406,9 @@
 <section class="sec" style="padding-top:8px">
   <div class="wrap">
     <div class="final">
-      <h2><span class="en">Ready to see who is reading?</span><span class="ar">جاهز تشوف مين بيقرأ؟</span></h2>
-      <p class="sub" style="margin-inline:auto"><span class="en">Download AstraEmail for Android and send your first tracked campaign today.</span><span class="ar">حمّل AstraEmail للأندرويد وابعت أول حملة متتبعة النهاردة.</span></p>
-      <div class="cta"><a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="en">Download for Android</span><span class="ar">تحميل للأندرويد</span></a></div>
+      <h2><span class="en">Ready to see who is reading?</span></h2>
+      <p class="sub" style="margin-inline:auto"><span class="en">Download AstraEmail for Android and send your first tracked campaign today.</span></p>
+      <div class="cta"><a class="btn btn-primary dl" href="https://api.astraemail.com/download"><svg><use href="#i-android"/></svg><span class="en">Download for Android</span></a></div>
     </div>
   </div>
 </section>
@@ -406,12 +418,12 @@
   <div class="wrap f-grid">
     <div>
       <div class="brand"><svg><use href="#logo"/></svg><span>AstraEmail</span></div>
-      <p><span class="en">Smart Email. Clear Insights.</span><span class="ar">إيميل ذكي. رؤية واضحة.</span></p>
-      <p><span class="en">Your mailbox credentials are encrypted on the server. We only track messages you send with AstraEmail, and every campaign email includes an unsubscribe link.</span><span class="ar">بيانات إيميلك مشفّرة على السيرفر. بنتتبع بس الرسائل اللي بتبعتها من AstraEmail، وكل إيميل حملة فيه رابط إلغاء اشتراك.</span></p>
+      <p><span class="en">Smart Email. Clear Insights.</span></p>
+      <p><span class="en">Your mailbox credentials are encrypted on the server. We only track messages you send with AstraEmail, and every campaign email includes an unsubscribe link.</span></p>
     </div>
     <div>
       <p>© <span id="y">2026</span> AstraEmail. astraemail.com</p>
-      <p><span class="en">Android app. Coming soon to Google Play.</span><span class="ar">تطبيق أندرويد. قريبًا على Google Play.</span></p>
+      <p><span class="en">Android app. Coming soon to Google Play.</span></p>
     </div>
   </div>
 </footer>
@@ -422,24 +434,18 @@
       <svg viewBox="0 0 120 120"><defs><linearGradient id="dlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fb4ff"/><stop offset="1" stop-color="#a06bff"/></linearGradient></defs><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="dlfg" cx="60" cy="60" r="52"/></svg>
       <div class="dlm-n" id="dln">5</div>
     </div>
-    <h3><span class="en">Your download starts in <b id="dlsE">5</b> s</span><span class="ar">التحميل هيبدأ بعد <b id="dlsA">5</b> ثانية</span></h3>
-    <p><span class="en">AstraEmail for Android (APK).</span><span class="ar">تطبيق AstraEmail للأندرويد (ملف APK).</span></p>
+    <h3><span class="en">Your download starts in <b id="dlsE">5</b> s</span></h3>
+    <p><span class="en">AstraEmail for Android (APK).</span></p>
     <div class="dlm-act">
-      <a class="btn btn-primary btn-sm" id="dlnow" href="https://api.astraemail.com/download"><span class="en">Start now</span><span class="ar">ابدأ التحميل الآن</span></a>
-      <button class="dlm-x" id="dlx" type="button"><span class="en">Cancel</span><span class="ar">إلغاء</span></button>
+      <a class="btn btn-primary btn-sm" id="dlnow" href="https://api.astraemail.com/download"><span class="en">Start now</span></a>
+      <button class="dlm-x" id="dlx" type="button"><span class="en">Cancel</span></button>
     </div>
-    <div class="dlm-hint"><span class="en">If your phone asks, allow installing from this source.</span><span class="ar">لو الموبايل سألك، اسمح بالتثبيت من هذا المصدر.</span></div>
+    <div class="dlm-hint"><span class="en">If your phone asks, allow installing from this source.</span></div>
   </div>
 </div>
 
 <script>
   var h = document.documentElement;
-  function setLang(l) { h.lang = l; h.dir = l === "ar" ? "rtl" : "ltr"; }
-  var saved = null; try { saved = localStorage.getItem("l"); } catch (e) {}
-  setLang(saved || ((navigator.language || "").toLowerCase().indexOf("ar") === 0 ? "ar" : "en"));
-  document.getElementById("sw").onclick = function () {
-    var n = h.lang === "ar" ? "en" : "ar"; setLang(n); try { localStorage.setItem("l", n); } catch (x) {}
-  };
   document.getElementById("y").textContent = new Date().getFullYear();
   if (location.search.indexOf("soon=1") > -1) {
     document.getElementById("soon").hidden = false;
@@ -447,7 +453,7 @@
   }
   (function () {
     var m = document.getElementById("dlm"), n = document.getElementById("dln"), fg = document.getElementById("dlfg"),
-        sE = document.getElementById("dlsE"), sA = document.getElementById("dlsA"), T = 5, left = T, timer = null, started = false;
+        sE = document.getElementById("dlsE") || {}, sA = document.getElementById("dlsA") || {}, T = 5, left = T, timer = null, started = false;
     var URL_DL = "https://api.astraemail.com/download";
     function go() { if (started) return; started = true; clearInterval(timer); location.href = URL_DL; setTimeout(close, 1500); }
     function close() { clearInterval(timer); m.classList.remove("open"); m.hidden = true; document.body.style.overflow = ""; }
